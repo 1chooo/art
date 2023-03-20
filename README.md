@@ -4,6 +4,16 @@
 
 Coopyright ©2022 1chooo.
 
+### Home Content
+
+![](./assets/Home_content.png)
+
+### Header Choices
+![](./assets//Header.png)
+
+### Home Page
+![](./assets/Home.png)
+
 ### Two kind of language: 
 * Chinese
 * English
