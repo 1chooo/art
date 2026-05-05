@@ -28,13 +28,13 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
         sizes="(max-width: 768px) 100vw, 50vw"
         priority
       />
-      {/* Bottom-left carousel controls */}
-      <div className="absolute bottom-4 left-4 z-10 flex gap-1 md:bottom-6 md:left-6">
+      {/* Top-right carousel controls – styled as grid cells */}
+      <div className="absolute top-0 right-0 z-10 flex gap-2 bg-black md:gap-4">
         <button
           type="button"
           onClick={() => setIndex((i) => i - 1)}
           aria-label={prevLabel}
-          className="border-bento-ink bg-bento-bg/90 text-bento-ink hover:bg-bento-ink hover:text-bento-bg border-2 p-1.5 backdrop-blur-sm transition-colors"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-r-2 border-l-8 border-b-8"
         >
           <ChevronLeft className="size-5" strokeWidth={2.5} />
         </button>
@@ -42,7 +42,7 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
           type="button"
           onClick={() => setIndex((i) => i + 1)}
           aria-label={nextLabel}
-          className="border-bento-ink bg-bento-bg/90 text-bento-ink hover:bg-bento-ink hover:text-bento-bg border-2 p-1.5 backdrop-blur-sm transition-colors"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-b-8"
         >
           <ChevronRight className="size-5" strokeWidth={2.5} />
         </button>

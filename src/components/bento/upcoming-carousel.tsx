@@ -24,30 +24,32 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
   if (!slide) return null;
 
   return (
-    <div className="flex h-full flex-col">
-      {/* Top bar: label left, arrows right */}
-      <div className="flex items-center justify-between px-4 py-2 md:px-6 md:py-3">
+    <div className="relative flex h-full flex-col">
+      {/* Top-right carousel controls – styled as grid cells */}
+      <div className="absolute top-0 right-0 z-10 flex gap-2 bg-black md:gap-4">
+        <button
+          type="button"
+          onClick={() => setIndex((i) => i - 1)}
+          aria-label={prevLabel}
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-r-2 border-l-8 border-b-8"
+        >
+          <ChevronLeft className="size-5" strokeWidth={2.5} />
+        </button>
+        <button
+          type="button"
+          onClick={() => setIndex((i) => i + 1)}
+          aria-label={nextLabel}
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-b-8"
+        >
+          <ChevronRight className="size-5" strokeWidth={2.5} />
+        </button>
+      </div>
+
+      {/* Label */}
+      <div className="px-4 py-2 md:px-6 md:py-3">
         <p className="border-bento-ink inline-block border-b-2 text-xs font-bold uppercase tracking-[0.15em]">
           {label}
         </p>
-        <div className="flex gap-1">
-          <button
-            type="button"
-            onClick={() => setIndex((i) => i - 1)}
-            aria-label={prevLabel}
-            className="border-bento-ink text-bento-ink hover:bg-bento-ink hover:text-bento-bg border-2 p-1.5 transition-colors"
-          >
-            <ChevronLeft className="size-4 md:size-5" strokeWidth={2.5} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setIndex((i) => i + 1)}
-            aria-label={nextLabel}
-            className="border-bento-ink text-bento-ink hover:bg-bento-ink hover:text-bento-bg border-2 p-1.5 transition-colors"
-          >
-            <ChevronRight className="size-4 md:size-5" strokeWidth={2.5} />
-          </button>
-        </div>
       </div>
 
       {/* Content */}

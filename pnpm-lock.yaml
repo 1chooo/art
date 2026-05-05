@@ -20,6 +20,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      embed-card:
+        specifier: ^0.3.0
+        version: 0.3.0(react@19.2.5)
       lucide-react:
         specifier: ^1.14.0
         version: 1.14.0(react@19.2.5)
@@ -1254,6 +1257,17 @@ packages:
 
   electron-to-chromium@1.5.349:
     resolution: {integrity: sha512-QsWVGyRuY07Aqb234QytTfwd5d9AJlfNIQ5wIOl1L+PZDzI9d9+Fn0FRale/QYlFxt/bUnB0/nLd1jFPGxGK1A==}
+
+  embed-card@0.3.0:
+    resolution: {integrity: sha512-qSlgssU5aI2RZXSqnXFZT5PMvJox8y/J887QtRrdhT1AdEfnDdfaVTUeFmqfsWKo58YUNIXE1gHQWBu0af7ZJg==}
+    peerDependencies:
+      next-themes: ^0.3.0 || ^0.4.0
+      react: ^18.3.0 || ^19.0.0
+    peerDependenciesMeta:
+      next-themes:
+        optional: true
+      react:
+        optional: true
 
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
@@ -3723,6 +3737,10 @@ snapshots:
       gopd: 1.2.0
 
   electron-to-chromium@1.5.349: {}
+
+  embed-card@0.3.0(react@19.2.5):
+    optionalDependencies:
+      react: 19.2.5
 
   emoji-regex@9.2.2: {}
 
