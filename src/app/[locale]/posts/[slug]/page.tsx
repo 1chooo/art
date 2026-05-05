@@ -47,7 +47,8 @@ export default async function PostPage(props: Props) {
   const t = await getTranslations("post");
 
   return (
-    <article className="mx-auto max-w-3xl px-5 pb-24 pt-10 md:px-8 md:pt-16">
+    <article className="w-full bg-paper px-5 pb-24 pt-10 md:px-8 md:pt-16">
+      <div className="mx-auto max-w-3xl">
       <nav className="mb-10">
         <Link
           href="/"
@@ -80,6 +81,7 @@ export default async function PostPage(props: Props) {
       </header>
       <div className="prose-blog">
         <MDXContent />
+      </div>
       </div>
     </article>
   );
