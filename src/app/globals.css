@@ -1,33 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@theme {
+  --color-paper: oklch(0.985 0.008 85);
+  --color-ink: oklch(0.22 0.02 270);
+  --color-ink-muted: oklch(0.45 0.02 270);
+  --color-accent: oklch(0.42 0.14 265);
+  --color-accent-soft: oklch(0.92 0.04 265);
+  --color-border: oklch(0.88 0.02 85);
+  --color-surface: oklch(0.97 0.015 85);
+  /* Brutalist bento (home) */
+  --color-bento-bg: oklch(0.97 0.02 95);
+  --color-bento-ink: oklch(0.12 0 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@utility prose-blog {
+  @apply prose prose-neutral max-w-none;
+  @apply prose-headings:font-normal prose-headings:tracking-tight;
+  @apply prose-p:text-ink prose-p:leading-relaxed;
+  @apply prose-a:text-accent prose-a:no-underline hover:prose-a:underline;
+  @apply prose-strong:text-ink prose-blockquote:border-border prose-blockquote:text-ink-muted;
+  @apply prose-code:text-ink prose-code:bg-surface prose-code:px-1 prose-code:py-0.5 prose-code:rounded;
 }

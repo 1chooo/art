@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "1chooo · 筆記",
+    "description": "筆記、專案與實驗。"
+  },
+  "brand": "1chooo",
+  "nav": {
+    "home": "首頁",
+    "note": "筆記",
+    "share": "分享",
+    "intro": "簡介"
+  },
+  "footer": {
+    "note": "使用 Next.js 與 MDX 構建。"
+  },
+  "home": {
+    "copyrightLabel": "版權",
+    "tagLabel": "標籤",
+    "tagFallback": "程式",
+    "upcomingLabel": "即將推出",
+    "projectLabel": "專案",
+    "projectTitle": "大氣預測",
+    "authorLabel": "作者",
+    "weatherLabel": "天氣",
+    "weatherLine": "24°C · 晴",
+    "quote": "說說很簡單，程式碼拿出來看看。",
+    "cta": "閱讀最新文章",
+    "upcomingFallbackTitle": "如何在 MANNG 工作？",
+    "upcomingFallbackDesc": "在瀏覽器搜尋「How to print helloworld」。",
+    "carouselPrev": "上一張",
+    "carouselNext": "下一張"
+  },
+  "post": {
+    "back": "← 回到筆記"
+  }
+}

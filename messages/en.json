@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "1chooo · Journal",
+    "description": "Notes, projects, and experiments."
+  },
+  "brand": "1chooo",
+  "nav": {
+    "home": "Home",
+    "note": "Note",
+    "share": "Share",
+    "intro": "Intro"
+  },
+  "footer": {
+    "note": "Built with Next.js & MDX."
+  },
+  "home": {
+    "copyrightLabel": "Copyright",
+    "tagLabel": "Tag",
+    "tagFallback": "Programming",
+    "upcomingLabel": "Upcoming",
+    "projectLabel": "Project",
+    "projectTitle": "Atmospheric Prediction",
+    "authorLabel": "Author",
+    "weatherLabel": "Weather",
+    "weatherLine": "24°C · Clear",
+    "quote": "Talk is cheap. Show me the code.",
+    "cta": "View the latest Article",
+    "upcomingFallbackTitle": "How to work in MANNG?",
+    "upcomingFallbackDesc": "Search 'How to print helloworld' in your browser.",
+    "carouselPrev": "Previous slide",
+    "carouselNext": "Next slide"
+  },
+  "post": {
+    "back": "← Journal"
+  }
+}
