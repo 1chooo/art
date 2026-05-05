@@ -1,6 +1,6 @@
-import type { ComponentType } from "react";
-
 declare module "*.mdx" {
+  import type { ComponentType } from "react";
+
   export const postMeta: {
     title: string;
     date: string;
