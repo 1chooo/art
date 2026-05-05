@@ -2,7 +2,7 @@ import type { ComponentType } from "react";
 import HelloWorld, { postMeta as metaHello } from "@/content/posts/hello-world.mdx";
 import OnMaking, { postMeta as metaMaking } from "@/content/posts/on-making.mdx";
 
-/** Add new posts here after creating `src/content/posts/<slug>.mdx`. */
+/** Add new posts here after creating `content/posts/<slug>.mdx`. */
 export type PostMeta = {
   title: string;
   date: string;

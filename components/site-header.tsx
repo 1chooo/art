@@ -16,9 +16,6 @@ export async function SiteHeader() {
           href="/"
           className="flex items-center gap-2 font-bold tracking-tight"
         >
-          <span className="text-2xl" role="img" aria-label="avatar">
-            👦🏻
-          </span>
           <span className="text-bento-ink text-lg md:text-xl">{tr("brand")}</span>
         </Link>
 
