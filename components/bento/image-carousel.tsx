@@ -34,7 +34,7 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
           type="button"
           onClick={() => setIndex((i) => i - 1)}
           aria-label={prevLabel}
-          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-r-2 border-l-8 border-b-8"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-l-8 border-b-8"
         >
           <ChevronLeft className="size-5" strokeWidth={2.5} />
         </button>
