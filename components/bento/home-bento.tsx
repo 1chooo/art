@@ -1,9 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Code2, Mail, Share2, Video } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getAllTags } from "@/lib/posts";
 import { BentoLabel } from "@/components/bento/bento-label";
 import { ImageCarousel } from "@/components/bento/image-carousel";
+import { TagCarousel } from "@/components/bento/tag-carousel";
 import { UpcomingCarousel } from "@/components/bento/upcoming-carousel";
 
 const iconBox =
@@ -13,7 +14,7 @@ export async function HomeBento() {
   const t = await getTranslations("home");
   const tr = await getTranslations();
   const posts = getAllPosts();
-  const tag = posts[0]?.tags?.[0] ?? t("tagFallback");
+  const tagNames = getAllTags().map((s) => s.tag);
   const latest = posts[0];
   const upcomingSlides =
     posts.length > 0
@@ -52,13 +53,12 @@ export async function HomeBento() {
           </p>
         </section>
 
-        {/* Tag */}
-        <section className="bg-bento-bg flex flex-col items-center justify-center p-4 text-center md:col-span-3 md:p-5">
-          <BentoLabel>{t("tagLabel")}</BentoLabel>
-          <p className="font-[family-name:var(--font-serif-display)] text-xl font-bold md:text-2xl">
-            {tag}
-          </p>
-        </section>
+        {/* Tag — cycles all tags from posts; click opens /posts?tag= */}
+        <TagCarousel
+          tags={tagNames}
+          label={t("tagLabel")}
+          tagFallback={t("tagFallback")}
+        />
 
         {/* Upcoming */}
         <section className="bg-bento-bg flex flex-col md:col-span-6">

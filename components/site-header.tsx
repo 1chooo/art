@@ -1,14 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/locale-switcher";
-import { getAllPosts } from "@/lib/posts";
-
 export async function SiteHeader() {
   const t = await getTranslations("nav");
   const tr = await getTranslations();
-  const posts = getAllPosts();
-  const latestSlug = posts[0]?.slug ?? "hello-world";
-
   return (
     <header className="bg-bento-bg sticky top-0 z-50">
       <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-6">
@@ -27,7 +22,7 @@ export async function SiteHeader() {
               </Link>
             </li>
             <li>
-              <Link href={`/posts/${latestSlug}`} className="text-bento-ink hover:underline">
+              <Link href="/posts" className="text-bento-ink hover:underline">
                 {t("note")}
               </Link>
             </li>

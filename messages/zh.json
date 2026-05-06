@@ -32,5 +32,15 @@
   },
   "post": {
     "back": "← 回到筆記"
+  },
+  "posts": {
+    "title": "所有文章",
+    "description": "瀏覽全部筆記、依標籤篩選或搜尋。",
+    "count": "共 {count} 篇",
+    "searchPlaceholder": "搜尋文章…",
+    "tagsHeading": "標籤",
+    "allTags": "全部",
+    "empty": "沒有符合條件的文章。",
+    "clearFilters": "清除篩選"
   }
 }

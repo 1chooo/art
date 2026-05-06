@@ -40,3 +40,18 @@ export function getAllPosts(): PostSummary[] {
     )
     .map((e) => ({ slug: e.slug, ...e.meta }));
 }
+
+export type TagStat = { tag: string; count: number };
+
+/** Unique tags across all posts, sorted by frequency (desc) then name. */
+export function getAllTags(): TagStat[] {
+  const counts = new Map<string, number>();
+  for (const e of ENTRIES) {
+    for (const t of e.meta.tags ?? []) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+}

@@ -32,5 +32,15 @@
   },
   "post": {
     "back": "← Journal"
+  },
+  "posts": {
+    "title": "All posts",
+    "description": "Browse every note, filter by tag, or search.",
+    "count": "{count, plural, one {# post} other {# posts}}",
+    "searchPlaceholder": "Search posts…",
+    "tagsHeading": "Tags",
+    "allTags": "All",
+    "empty": "No posts match your filters.",
+    "clearFilters": "Clear filters"
   }
 }
