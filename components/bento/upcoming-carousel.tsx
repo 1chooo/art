@@ -54,7 +54,7 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
 
       {/* Content */}
       <div className="flex flex-1 flex-col justify-center px-5 py-4 md:px-8 md:py-6">
-        <h3 className="text-bento-ink font-[family-name:var(--font-serif-display)] text-xl font-bold leading-tight md:text-3xl">
+        <h3 className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl">
           {slide.title}
         </h3>
         <p className="text-bento-ink mt-2 text-sm font-medium leading-snug opacity-80 md:mt-3 md:text-base">
