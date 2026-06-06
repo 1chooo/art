@@ -56,7 +56,7 @@ export default async function PostsPage(props: Props) {
   const q = typeof sp.q === "string" ? sp.q : undefined;
 
   const t = await getTranslations("posts");
-  const all = getAllPosts();
+  const all = getAllPosts(locale as "en" | "zh");
   const tagStats = getAllTags();
   const qLower = q?.trim().toLowerCase() ?? "";
 

@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Code2, Mail, Share2, Video } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getAllPosts, getAllTags } from "@/lib/posts";
@@ -11,10 +11,11 @@ const iconBox =
   "text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center transition-colors";
 
 export async function HomeBento() {
+  const locale = (await getLocale()) as "en" | "zh";
   const t = await getTranslations("home");
   const tm = await getTranslations("metadata");
   const tr = await getTranslations();
-  const posts = getAllPosts();
+  const posts = getAllPosts(locale);
   const tagNames = getAllTags().map((s) => s.tag);
   const latest = posts[0];
   const upcomingSlides =

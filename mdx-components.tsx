@@ -1,6 +1,12 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
 import { Link } from "@/i18n/navigation";
+import { Callout } from "@/components/mdx/callout";
+import { CodeBlock } from "@/components/mdx/code-block";
+import { FileTree } from "@/components/mdx/file-tree";
+import { StackCards } from "@/components/mdx/stack-cards";
+import { Step, Steps } from "@/components/mdx/steps";
+import { TagDemoWrapper } from "@/components/mdx/tag-demo-wrapper";
 
 function MdxLink({
   href,
@@ -34,6 +40,13 @@ function MdxImg(props: ComponentPropsWithoutRef<"img">) {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
+    Callout,
+    CodeBlock,
+    FileTree,
+    StackCards,
+    Step,
+    Steps,
+    TagDemo: TagDemoWrapper,
     h1: (props) => (
       <h1
         {...props}

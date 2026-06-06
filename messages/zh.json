@@ -31,7 +31,8 @@
     "carouselNext": "下一張"
   },
   "post": {
-    "back": "← 回到筆記"
+    "back": "← 回到筆記",
+    "readInLocale": "閱讀{locale, select, en {英文版} zh {中文版} other {其他語言}}"
   },
   "posts": {
     "title": "所有文章",

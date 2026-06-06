@@ -3,7 +3,11 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import { getPostEntry, getPostSlugs } from "@/lib/posts";
+import {
+  getPostEntry,
+  getPostSlugs,
+  type PostLocale,
+} from "@/lib/posts";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -17,8 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { slug } = await props.params;
-  const entry = getPostEntry(slug);
+  const { slug, locale } = await props.params;
+  const entry = getPostEntry(slug, locale as PostLocale);
   if (!entry) return {};
   return {
     title: entry.meta.title,
@@ -40,11 +44,17 @@ function formatDate(iso: string, locale: string) {
 
 export default async function PostPage(props: Props) {
   const { slug, locale } = await props.params;
-  const entry = getPostEntry(slug);
+  const postLocale = locale as PostLocale;
+  const entry = getPostEntry(slug, postLocale);
   if (!entry) notFound();
 
-  const { meta, MDXContent } = entry;
+  const { meta, MDXContent, availableLocales } = entry;
   const t = await getTranslations("post");
+
+  const alternateLocale =
+    availableLocales.length > 1
+      ? availableLocales.find((l) => l !== postLocale)
+      : undefined;
 
   return (
     <article className="w-full bg-paper px-5 pb-[max(6rem,env(safe-area-inset-bottom))] pt-10 md:px-8 md:pb-24 md:pt-16">
@@ -67,13 +77,27 @@ export default async function PostPage(props: Props) {
         <p className="text-ink-muted text-base leading-relaxed md:text-xl">
           {meta.description}
         </p>
+        {alternateLocale ? (
+          <p className="mt-4">
+            <Link
+              href={`/posts/${slug}`}
+              locale={alternateLocale}
+              className="text-accent text-sm font-semibold hover:underline"
+            >
+              {t("readInLocale", { locale: alternateLocale })}
+            </Link>
+          </p>
+        ) : null}
         {meta.tags && meta.tags.length > 0 ? (
           <ul className="mt-6 flex flex-wrap gap-2">
             {meta.tags.map((tag) => (
               <li key={tag}>
-                <span className="bg-accent-soft text-accent rounded-full px-3 py-1 text-xs tracking-wide uppercase">
+                <Link
+                  href={`/posts?tag=${encodeURIComponent(tag)}`}
+                  className="bg-accent-soft text-accent rounded-full px-3 py-1 text-xs tracking-wide uppercase hover:opacity-90"
+                >
                   {tag}
-                </span>
+                </Link>
               </li>
             ))}
           </ul>

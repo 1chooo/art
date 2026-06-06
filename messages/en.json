@@ -31,7 +31,8 @@
     "carouselNext": "Next slide"
   },
   "post": {
-    "back": "← Journal"
+    "back": "← Journal",
+    "readInLocale": "Read in {locale, select, en {English} zh {中文} other {another language}}"
   },
   "posts": {
     "title": "All posts",

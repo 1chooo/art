@@ -1,0 +1,144 @@
+export const postMeta = {
+  title: "打造這本日誌",
+  date: "2026-06-06",
+  description:
+    "混合式指南——這個網站為何存在、用什麼搭建，以及如何一步步重建它。",
+  tags: ["guide", "nextjs", "mdx", "build"],
+};
+
+這本日誌是一個安放長文的地方——以排版為先、支援雙語，並刻意分成兩種氛圍：**首頁的粗獷 bento 網格**，以及**文章頁的編輯式閱讀體驗**。
+
+首頁用結構說話；文章用文字呼吸。這種對比是刻意的。這篇指南會同時說明「為什麼」與「怎麼做」。
+
+## 技術堆疊一覽
+
+點選每張卡片，了解它在專案中的角色：
+
+<StackCards locale="zh" />
+
+<Callout variant="tip" title="提示">
+  全站以 App Router 與 React Server Components 為預設。只有在需要互動的地方——輪播、搜尋，以及本文的示範元件——才使用 Client Component。
+</Callout>
+
+## 專案結構
+
+展開資料夾，瀏覽目錄配置：
+
+<FileTree
+  tree={[
+    {
+      name: "app/",
+      children: [
+        {
+          name: "[locale]/",
+          children: [
+            { name: "page.tsx — bento 首頁" },
+            {
+              name: "posts/",
+              children: [
+                { name: "page.tsx — 列表與篩選" },
+                { name: "[slug]/page.tsx — 文章頁" },
+              ],
+            },
+          ],
+        },
+        { name: "globals.css — 設計 token" },
+      ],
+    },
+    {
+      name: "content/posts/",
+      children: [{ name: "*.mdx — 文章與 postMeta" }],
+    },
+    {
+      name: "components/",
+      children: [
+        { name: "bento/ — 首頁網格" },
+        { name: "mdx/ — 互動式文章區塊" },
+      ],
+    },
+    { name: "lib/posts.ts — 文章註冊表" },
+    { name: "messages/ — UI 翻譯（en、zh）" },
+    { name: "i18n/ — 語系路由" },
+  ]}
+/>
+
+## 逐步搭建
+
+<Steps>
+  <Step title="建立 Next.js + Tailwind v4 專案">
+    以 create-next-app 建立 App Router + TypeScript 專案。透過 @tailwindcss/postcss 加入 Tailwind v4，並在 globals.css 定義語意化色彩 token——文章用 paper、ink、accent；首頁 bento 用 bento-bg、bento-ink。
+  </Step>
+  <Step title="設定 MDX 與 remark-gfm">
+    安裝 @next/mdx、@mdx-js/react 與 remark-gfm。以 createMDX 包裝 Next 設定，並將 mdx 加入 pageExtensions。在 mdx-components.tsx 統一設定 markdown 元素的樣式。
+  </Step>
+  <Step title="加入 next-intl 雙語路由">
+    設定 en、zh 語系，並使用 localePrefix: 'always'，讓每個 URL 都帶語系前綴。UI 字串放在 messages/en.json 與 messages/zh.json。全站連結使用 @/i18n/navigation 以保持語系一致。
+  </Step>
+  <Step title="建立文章（MDX + 註冊表）">
+    每篇文章放在 content/posts/。匯出 postMeta 物件，包含 title、date、description 與可選的 tags。在 lib/posts.ts 手動註冊 import——這種方式型別明確，建置結果可預期。
+  </Step>
+  <Step title="以 prose-blog 與 bento 網格完成樣式">
+    文章使用 @tailwindcss/typography 的 prose-blog 工具類。首頁以 12 欄 bento 網格組合圖片、標籤與最新文章輪播——除輪播控制外，皆由 Server Component 渲染。
+  </Step>
+</Steps>
+
+## 動手試試
+
+新文章的基本結構如下：
+
+<CodeBlock
+  title="content/posts/my-post.mdx"
+  language="mdx"
+  code={`export const postMeta = {
+  title: "我的第一篇筆記",
+  date: "2026-06-06",
+  description: "供列表與 SEO 使用的簡短摘要。",
+  tags: ["journal"],
+};
+
+你的 MDX 內容從這裡開始。`}
+/>
+
+在註冊表中加入這篇文章：
+
+<CodeBlock
+  title="lib/posts.ts"
+  language="typescript"
+  code={`import MyPost, { postMeta as metaMyPost } from "@/content/posts/my-post.mdx";
+
+const ENTRIES: PostEntry[] = [
+  {
+    slug: "my-post",
+    locales: { en: { meta: metaMyPost, MDXContent: MyPost } },
+  },
+  // ...既有項目
+];`}
+/>
+
+啟動開發伺服器：
+
+<CodeBlock
+  title="終端機"
+  language="bash"
+  code="npm run dev"
+/>
+
+前往 `/zh/posts/my-post` 即可預覽。
+
+## 標籤與探索
+
+標籤是 postMeta 上的可選字串。它們驅動三個功能：[文章列表](/posts) 的篩選 pill、文章頁可點擊的標籤，以及首頁 bento 輪播中的標籤展示。
+
+試試下方的篩選器——它使用本站的真實文章：
+
+<TagDemo />
+
+<Callout variant="note" title="備註">
+  同一 slug 下可以為不同語系準備不同內容。本篇指南有英文與中文版本；較早的筆記在尚未翻譯前，兩種語系都會顯示英文內容。
+</Callout>
+
+## 接下來
+
+瀏覽[完整文章列表](/posts)，閱讀 [Hello, world](/posts/hello-world) 感受網站語氣，或 fork 專案，把 bento 網格改成你的樣子。
+
+最好的日誌都是一小步一小步長出來的——一篇文章、一個標籤、一頁安靜的版面。
