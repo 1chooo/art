@@ -47,9 +47,9 @@ export async function HomeBento() {
         {/* ── Row 1 ── */}
 
         {/* Copyright */}
-        <section className="bg-bento-bg order-1 flex flex-col items-center justify-center p-4 text-center md:order-none md:col-span-3 md:p-5">
+        <section className="bg-bento-bg order-1 flex flex-col items-center justify-center p-4 text-center md:order-0 md:col-span-3 md:p-5">
           <BentoLabel>{t("copyrightLabel")}</BentoLabel>
-          <p className="font-[family-name:var(--font-serif-display)] text-xl font-bold md:text-2xl">
+          <p className="font-(family-name:--font-serif-display) text-xl font-bold md:text-2xl">
             {tr("brand")}
           </p>
           <p className="text-bento-ink/70 mt-2 max-w-xs text-sm font-medium md:hidden">
@@ -62,11 +62,11 @@ export async function HomeBento() {
           tags={tagNames}
           label={t("tagLabel")}
           tagFallback={t("tagFallback")}
-          className="order-7 md:order-none"
+          className="order-7 md:order-0"
         />
 
         {/* Upcoming */}
-        <section className="bg-bento-bg order-2 flex flex-col md:order-none md:col-span-6">
+        <section className="bg-bento-bg order-2 flex flex-col md:order-0 md:col-span-6">
           <UpcomingCarousel
             slides={upcomingSlides}
             prevLabel={t("carouselPrev")}
@@ -78,7 +78,7 @@ export async function HomeBento() {
         {/* ── Row 2 ── */}
 
         {/* Hero image */}
-        <div className="bg-bento-bg order-5 md:order-none md:col-span-6 md:row-start-2">
+        <div className="bg-bento-bg order-5 md:order-0 md:col-span-6 md:row-start-2">
           <ImageCarousel
             images={heroImages}
             prevLabel={t("carouselPrev")}
@@ -87,9 +87,9 @@ export async function HomeBento() {
         </div>
 
         {/* Project */}
-        <section className="bg-bento-bg order-4 flex flex-col items-center justify-center p-6 text-center md:order-none md:col-span-3 md:row-start-2">
+        <section className="bg-bento-bg order-4 flex flex-col items-center justify-center p-6 text-center md:order-0 md:col-span-3 md:row-start-2">
           <BentoLabel>{t("projectLabel")}</BentoLabel>
-          <p className="font-[family-name:var(--font-serif-display)] text-xl font-bold leading-tight md:text-2xl">
+          <p className="font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-2xl">
             {t("projectTitle")}
           </p>
         </section>
@@ -97,12 +97,12 @@ export async function HomeBento() {
         {/* Author + Social + Weather — nested sub-grid */}
         <div
           id="intro"
-          className="order-6 grid grid-cols-2 gap-bento-gap bg-black md:order-none md:col-span-3 md:row-start-2"
+          className="order-6 grid grid-cols-2 gap-bento-gap bg-black md:order-0 md:col-span-3 md:row-start-2"
         >
           {/* Author name */}
           <div className="bg-bento-bg col-span-2 hidden flex-col items-center justify-center p-3 text-center md:flex">
             <BentoLabel>{t("authorLabel")}</BentoLabel>
-            <p className="font-[family-name:var(--font-serif-display)] text-lg font-bold">
+            <p className="font-(family-name:--font-serif-display) text-lg font-bold">
               {tr("brand")}
             </p>
           </div>
@@ -143,7 +143,7 @@ export async function HomeBento() {
 
           {/* Weather */}
           <div className="bg-bento-bg col-span-2 flex flex-1 flex-col items-center justify-center p-3 text-center">
-            <p className="font-[family-name:var(--font-serif-display)] text-base font-bold md:text-lg">
+            <p className="font-(family-name:--font-serif-display) text-base font-bold md:text-lg">
               {t("weatherLine")}
             </p>
           </div>
@@ -152,23 +152,23 @@ export async function HomeBento() {
         {/* ── Row 3 ── */}
 
         {/* Quote — black background, white text */}
-        <section className="bg-bento-ink text-bento-bg order-8 flex items-center justify-center p-6 text-center md:order-none md:col-span-6 md:row-start-3 md:p-8">
-          <p className="font-[family-name:var(--font-serif-display)] max-w-xl text-lg font-bold md:text-xl">
+        <section className="bg-bento-ink text-bento-bg order-8 flex items-center justify-center p-6 text-center md:order-0 md:col-span-6 md:row-start-3 md:p-8">
+          <p className="font-(family-name:--font-serif-display) max-w-xl text-lg font-bold md:text-xl">
             {t("quote")}
           </p>
         </section>
 
         {/* CTA */}
-        <section className="bg-bento-bg order-3 flex items-center justify-center p-6 text-center md:order-none md:col-span-6 md:row-start-3 md:p-8">
+        <section className="bg-bento-bg order-3 flex items-center justify-center p-6 text-center md:order-0 md:col-span-6 md:row-start-3 md:p-8">
           {latest ? (
             <Link
               href={`/posts/${latest.slug}`}
-              className="text-bento-ink font-[family-name:var(--font-serif-display)] inline-block text-lg font-bold transition-colors hover:opacity-70 md:text-2xl"
+              className="text-bento-ink font-(family-name:--font-serif-display) inline-block text-lg font-bold transition-colors hover:opacity-70 md:text-2xl"
             >
               {t("cta")}
             </Link>
           ) : (
-            <span className="font-[family-name:var(--font-serif-display)] text-lg font-bold opacity-50 md:text-2xl">
+            <span className="font-(family-name:--font-serif-display) text-lg font-bold opacity-50 md:text-2xl">
               {t("cta")}
             </span>
           )}

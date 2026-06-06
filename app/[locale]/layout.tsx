@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { DM_Sans, Playfair_Display } from "next/font/google";
-import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
 
@@ -60,7 +59,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body
-        className={`${sans.className} bg-black text-bento-ink min-h-dvh font-[family-name:var(--font-sans-body)] antialiased`}
+        className={`${sans.className} bg-black text-bento-ink min-h-dvh font-(family-name:--font-sans-body) antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-dvh flex-col">

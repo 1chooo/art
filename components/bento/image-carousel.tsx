@@ -19,7 +19,7 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
   if (!current) return null;
 
   return (
-    <div className="relative flex aspect-[4/3] min-h-[240px] items-center justify-center md:aspect-auto md:h-full md:min-h-[320px]">
+    <div className="relative flex aspect-4/3 min-h-[240px] items-center justify-center md:aspect-auto md:h-full md:min-h-[320px]">
       <Image
         src={current.src}
         alt={current.alt}
