@@ -47,12 +47,12 @@ export default async function PostPage(props: Props) {
   const t = await getTranslations("post");
 
   return (
-    <article className="w-full bg-paper px-5 pb-24 pt-10 md:px-8 md:pt-16">
+    <article className="w-full bg-paper px-5 pb-[max(6rem,env(safe-area-inset-bottom))] pt-10 md:px-8 md:pb-24 md:pt-16">
       <div className="mx-auto max-w-3xl">
       <nav className="mb-10">
         <Link
           href="/"
-          className="text-ink-muted hover:text-accent text-sm transition-colors"
+          className="text-ink-muted hover:text-accent inline-flex min-h-11 items-center py-2 text-sm font-semibold transition-colors"
         >
           {t("back")}
         </Link>
@@ -61,10 +61,10 @@ export default async function PostPage(props: Props) {
         <p className="text-ink-muted mb-3 text-sm tracking-wide uppercase">
           {formatDate(meta.date, locale)}
         </p>
-        <h1 className="font-[family-name:var(--font-serif-display)] text-ink mb-4 text-4xl leading-tight tracking-tight md:text-5xl">
+        <h1 className="font-[family-name:var(--font-serif-display)] text-ink mb-4 text-3xl leading-tight tracking-tight md:text-5xl">
           {meta.title}
         </h1>
-        <p className="text-ink-muted text-lg leading-relaxed md:text-xl">
+        <p className="text-ink-muted text-base leading-relaxed md:text-xl">
           {meta.description}
         </p>
         {meta.tags && meta.tags.length > 0 ? (

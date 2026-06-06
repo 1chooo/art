@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import clsx from "clsx";
 import { Link } from "@/i18n/navigation";
 import { BentoLabel } from "@/components/bento/bento-label";
 
@@ -10,9 +11,10 @@ type Props = {
   tags: string[];
   label: string;
   tagFallback: string;
+  className?: string;
 };
 
-export function TagCarousel({ tags, label, tagFallback }: Props) {
+export function TagCarousel({ tags, label, tagFallback, className }: Props) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -31,11 +33,20 @@ export function TagCarousel({ tags, label, tagFallback }: Props) {
     return () => window.clearInterval(id);
   }, [tags.length, tick]);
 
+  const resumeAfterTouch = () => {
+    window.setTimeout(() => setPaused(false), 500);
+  };
+
   return (
     <section
-      className="bg-bento-bg flex flex-col items-center justify-center p-4 text-center md:col-span-3 md:p-5"
+      className={clsx(
+        "bg-bento-bg flex flex-col items-center justify-center p-4 text-center md:col-span-3 md:p-5",
+        className,
+      )}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={resumeAfterTouch}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {

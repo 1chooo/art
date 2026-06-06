@@ -12,6 +12,7 @@ const iconBox =
 
 export async function HomeBento() {
   const t = await getTranslations("home");
+  const tm = await getTranslations("metadata");
   const tr = await getTranslations();
   const posts = getAllPosts();
   const tagNames = getAllTags().map((s) => s.tag);
@@ -46,10 +47,13 @@ export async function HomeBento() {
         {/* ── Row 1 ── */}
 
         {/* Copyright */}
-        <section className="bg-bento-bg flex flex-col items-center justify-center p-4 text-center md:col-span-3 md:p-5">
+        <section className="bg-bento-bg order-1 flex flex-col items-center justify-center p-4 text-center md:order-none md:col-span-3 md:p-5">
           <BentoLabel>{t("copyrightLabel")}</BentoLabel>
           <p className="font-[family-name:var(--font-serif-display)] text-xl font-bold md:text-2xl">
             {tr("brand")}
+          </p>
+          <p className="text-bento-ink/70 mt-2 max-w-xs text-sm font-medium md:hidden">
+            {tm("description")}
           </p>
         </section>
 
@@ -58,10 +62,11 @@ export async function HomeBento() {
           tags={tagNames}
           label={t("tagLabel")}
           tagFallback={t("tagFallback")}
+          className="order-7 md:order-none"
         />
 
         {/* Upcoming */}
-        <section className="bg-bento-bg flex flex-col md:col-span-6">
+        <section className="bg-bento-bg order-2 flex flex-col md:order-none md:col-span-6">
           <UpcomingCarousel
             slides={upcomingSlides}
             prevLabel={t("carouselPrev")}
@@ -73,7 +78,7 @@ export async function HomeBento() {
         {/* ── Row 2 ── */}
 
         {/* Hero image */}
-        <div className="bg-bento-bg md:col-span-6 md:row-start-2">
+        <div className="bg-bento-bg order-5 md:order-none md:col-span-6 md:row-start-2">
           <ImageCarousel
             images={heroImages}
             prevLabel={t("carouselPrev")}
@@ -82,7 +87,7 @@ export async function HomeBento() {
         </div>
 
         {/* Project */}
-        <section className="bg-bento-bg flex flex-col items-center justify-center p-6 text-center md:col-span-3 md:row-start-2">
+        <section className="bg-bento-bg order-4 flex flex-col items-center justify-center p-6 text-center md:order-none md:col-span-3 md:row-start-2">
           <BentoLabel>{t("projectLabel")}</BentoLabel>
           <p className="font-[family-name:var(--font-serif-display)] text-xl font-bold leading-tight md:text-2xl">
             {t("projectTitle")}
@@ -92,10 +97,10 @@ export async function HomeBento() {
         {/* Author + Social + Weather — nested sub-grid */}
         <div
           id="intro"
-          className="grid grid-cols-2 gap-bento-gap bg-black md:col-span-3 md:row-start-2"
+          className="order-6 grid grid-cols-2 gap-bento-gap bg-black md:order-none md:col-span-3 md:row-start-2"
         >
           {/* Author name */}
-          <div className="bg-bento-bg col-span-2 flex flex-col items-center justify-center p-3 text-center">
+          <div className="bg-bento-bg col-span-2 hidden flex-col items-center justify-center p-3 text-center md:flex">
             <BentoLabel>{t("authorLabel")}</BentoLabel>
             <p className="font-[family-name:var(--font-serif-display)] text-lg font-bold">
               {tr("brand")}
@@ -147,14 +152,14 @@ export async function HomeBento() {
         {/* ── Row 3 ── */}
 
         {/* Quote — black background, white text */}
-        <section className="bg-bento-ink text-bento-bg flex items-center justify-center p-6 text-center md:col-span-6 md:row-start-3 md:p-8">
+        <section className="bg-bento-ink text-bento-bg order-8 flex items-center justify-center p-6 text-center md:order-none md:col-span-6 md:row-start-3 md:p-8">
           <p className="font-[family-name:var(--font-serif-display)] max-w-xl text-lg font-bold md:text-xl">
             {t("quote")}
           </p>
         </section>
 
         {/* CTA */}
-        <section className="bg-bento-bg flex items-center justify-center p-6 text-center md:col-span-6 md:row-start-3 md:p-8">
+        <section className="bg-bento-bg order-3 flex items-center justify-center p-6 text-center md:order-none md:col-span-6 md:row-start-3 md:p-8">
           {latest ? (
             <Link
               href={`/posts/${latest.slug}`}

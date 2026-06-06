@@ -31,7 +31,7 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
           type="button"
           onClick={() => setIndex((i) => i - 1)}
           aria-label={prevLabel}
-          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex min-h-11 min-w-11 items-center justify-center p-2 transition-colors md:min-h-0 md:min-w-0 md:p-3"
           style={{ borderLeftWidth: 'var(--spacing-bento-gap)', borderBottomWidth: 'var(--spacing-bento-gap)' }}
         >
           <ChevronLeft className="size-5" strokeWidth={2.5} />
@@ -40,7 +40,7 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
           type="button"
           onClick={() => setIndex((i) => i + 1)}
           aria-label={nextLabel}
-          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex min-h-11 min-w-11 items-center justify-center p-2 transition-colors md:min-h-0 md:min-w-0 md:p-3"
           style={{ borderBottomWidth: 'var(--spacing-bento-gap)' }}
         >
           <ChevronRight className="size-5" strokeWidth={2.5} />
@@ -55,7 +55,7 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col justify-center px-5 py-4 md:px-8 md:py-6">
+      <div className="flex min-h-[200px] flex-1 flex-col justify-center px-5 py-4 md:min-h-0 md:px-8 md:py-6">
         <h3 className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl">
           {slide.title}
         </h3>

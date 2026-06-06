@@ -76,10 +76,13 @@ export default async function PostsPage(props: Props) {
   return (
     <div className="bg-paper w-full px-5 pb-24 pt-10 md:px-8 md:pt-16">
       <div className="mx-auto max-w-3xl">
-        <header className="border-border mb-10 border-b pb-8">
+        <header className="border-border mb-8 border-b pb-6 md:mb-10 md:pb-8">
           <h1 className="font-[family-name:var(--font-serif-display)] text-ink mb-2 text-3xl font-bold tracking-tight md:text-4xl">
             {t("title")}
           </h1>
+          <p className="text-ink-muted mb-2 text-sm md:text-base">
+            {t("description")}
+          </p>
           <p className="text-ink-muted text-sm md:text-base">
             {t("count", { count: filtered.length })}
           </p>
@@ -108,7 +111,7 @@ export default async function PostsPage(props: Props) {
               <li>
                 <Link
                   href={`/posts${postsQueryString({ q: currentQ || undefined })}`}
-                  className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors md:text-sm ${
+                  className={`rounded-full px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors md:py-1.5 md:text-sm ${
                     !tag
                       ? "bg-accent text-paper"
                       : "bg-accent-soft text-accent hover:opacity-90"
@@ -121,7 +124,7 @@ export default async function PostsPage(props: Props) {
                 <li key={stat.tag}>
                   <Link
                     href={`/posts${postsQueryString({ tag: stat.tag, q: currentQ || undefined })}`}
-                    className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors md:text-sm ${
+                    className={`rounded-full px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors md:py-1.5 md:text-sm ${
                       tag === stat.tag
                         ? "bg-accent text-paper"
                         : "bg-accent-soft text-accent hover:opacity-90"
@@ -153,29 +156,29 @@ export default async function PostsPage(props: Props) {
           <div className="space-y-12">
             {grouped.map(([year, posts]) => (
               <section key={year}>
-                <h2 className="font-[family-name:var(--font-serif-display)] text-ink-muted mb-6 text-2xl font-bold">
+                <h2 className="font-[family-name:var(--font-serif-display)] text-ink-muted mb-6 text-2xl font-bold md:mb-6">
                   {year}
                 </h2>
                 <ul className="flex flex-col">
                   {posts.map((post) => (
                     <li
                       key={post.slug}
-                      className="border-border border-b py-8 last:border-b-0"
+                      className="border-border flex flex-col border-b py-6 last:border-b-0 md:py-8"
                     >
-                      <p className="text-ink-muted mb-2 text-sm">
+                      <p className="text-ink-muted order-2 mb-2 text-sm md:order-1">
                         {formatDate(post.date, locale)}
                       </p>
                       <Link
                         href={`/posts/${post.slug}`}
-                        className="font-[family-name:var(--font-serif-display)] text-ink hover:text-accent text-2xl font-bold leading-tight transition-colors md:text-3xl"
+                        className="font-[family-name:var(--font-serif-display)] text-ink hover:text-accent order-1 text-2xl font-bold leading-tight transition-colors md:order-2 md:text-3xl"
                       >
                         {post.title}
                       </Link>
-                      <p className="text-ink-muted mt-3 text-base leading-relaxed">
+                      <p className="text-ink-muted order-3 mt-3 text-base leading-relaxed">
                         {post.description}
                       </p>
                       {post.tags && post.tags.length > 0 ? (
-                        <ul className="mt-4 flex flex-wrap gap-2">
+                        <ul className="order-4 mt-4 flex flex-wrap gap-2">
                           {post.tags.map((tg) => (
                             <li key={tg}>
                               <Link
