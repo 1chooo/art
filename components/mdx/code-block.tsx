@@ -36,7 +36,7 @@ export function CodeBlock({ code, language, title }: CodeBlockProps) {
           <CopyButton copied={copied} onCopy={handleCopy} />
         </div>
       )}
-      <pre className="bg-surface text-ink overflow-x-auto p-4 text-sm leading-relaxed">
+      <pre className="bg-surface text-ink font-(family-name:--font-mono) overflow-x-auto p-4 text-sm leading-relaxed">
         <code>{code.trim()}</code>
       </pre>
     </div>

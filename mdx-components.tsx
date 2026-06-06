@@ -4,6 +4,8 @@ import { Link } from "@/i18n/navigation";
 import { Callout } from "@/components/mdx/callout";
 import { CodeBlock } from "@/components/mdx/code-block";
 import { FileTree } from "@/components/mdx/file-tree";
+import { GapDemo } from "@/components/mdx/gap-demo";
+import { InlineCode, inlineCodeClass } from "@/components/mdx/inline-code";
 import { StackCards } from "@/components/mdx/stack-cards";
 import { Step, Steps } from "@/components/mdx/steps";
 import { TagDemoWrapper } from "@/components/mdx/tag-demo-wrapper";
@@ -29,6 +31,7 @@ function MdxLink({
 
 function MdxImg(props: ComponentPropsWithoutRef<"img">) {
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       {...props}
       alt={props.alt ?? ""}
@@ -43,6 +46,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Callout,
     CodeBlock,
     FileTree,
+    GapDemo,
+    InlineCode,
     StackCards,
     Step,
     Steps,
@@ -50,19 +55,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: (props) => (
       <h1
         {...props}
-        className="font-[family-name:var(--font-serif-display)] mb-6 mt-10 text-4xl tracking-tight text-ink md:text-5xl"
+        className="font-(family-name:--font-serif-display) mb-6 mt-10 text-4xl tracking-tight text-ink md:text-5xl"
       />
     ),
     h2: (props) => (
       <h2
         {...props}
-        className="font-[family-name:var(--font-serif-display)] mb-4 mt-12 text-2xl tracking-tight text-ink md:text-3xl"
+        className="font-(family-name:--font-serif-display) mb-4 mt-12 text-2xl tracking-tight text-ink md:text-3xl"
       />
     ),
     h3: (props) => (
       <h3
         {...props}
-        className="font-[family-name:var(--font-serif-display)] mb-3 mt-10 text-xl text-ink md:text-2xl"
+        className="font-(family-name:--font-serif-display) mb-3 mt-10 text-xl text-ink md:text-2xl"
       />
     ),
     p: (props) => (
@@ -88,20 +93,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: (props) => (
       <blockquote
         {...props}
-        className="border-border font-[family-name:var(--font-serif-display)] my-8 border-l-2 pl-6 text-lg italic text-ink-muted md:text-xl"
+        className="border-border font-(family-name:--font-serif-display) my-8 border-l-2 pl-6 text-lg italic text-ink-muted md:text-xl"
       />
     ),
     hr: () => <hr className="border-border my-14 border-t" />,
-    code: (props) => (
-      <code
-        {...props}
-        className="bg-surface text-ink rounded px-1.5 py-0.5 text-[0.9em]"
-      />
-    ),
+    code: (props) => <code {...props} className={inlineCodeClass} />,
     pre: (props) => (
       <pre
         {...props}
-        className="border-border bg-surface text-ink my-8 overflow-x-auto rounded-lg border p-4 text-sm leading-relaxed"
+        className="border-border bg-surface text-ink font-mono my-8 overflow-x-auto rounded-lg border p-4 text-sm leading-relaxed"
       />
     ),
     table: (props) => (

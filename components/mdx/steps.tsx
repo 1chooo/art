@@ -54,7 +54,7 @@ export function Steps({ children }: StepsProps) {
               />
             </button>
             {isOpen ? (
-              <div className="text-ink border-border border-t px-5 pb-5 pt-4 text-base leading-relaxed md:pl-[4.5rem] [&>p:last-child]:mb-0 [&>p]:mb-4">
+              <div className="text-ink border-border border-t px-5 pb-5 pt-4 text-base leading-relaxed md:pl-[4.5rem] [&>p:last-child]:mb-0 [&>p]:mb-4 [&_code]:bg-surface [&_code]:font-(family-name:--font-mono) [&_code]:rounded [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-[0.875em]">
                 {step.content}
               </div>
             ) : null}

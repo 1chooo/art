@@ -66,19 +66,19 @@ Expand folders to explore the layout:
 
 <Steps>
   <Step title="Scaffold Next.js + Tailwind v4">
-    Start with `create-next-app` using the App Router and TypeScript. Add Tailwind v4 via `@tailwindcss/postcss` and define semantic color tokens in `globals.css` — `paper`, `ink`, `accent` for posts, and `bento-bg`, `bento-ink` for the home grid.
+    Start with <InlineCode>create-next-app</InlineCode> using the App Router and TypeScript. Add Tailwind v4 via <InlineCode>@tailwindcss/postcss</InlineCode> and define semantic color tokens in <InlineCode>globals.css</InlineCode> — <InlineCode>paper</InlineCode>, <InlineCode>ink</InlineCode>, <InlineCode>accent</InlineCode> for posts, and <InlineCode>bento-bg</InlineCode>, <InlineCode>bento-ink</InlineCode> for the home grid.
   </Step>
   <Step title="Wire MDX with remark-gfm">
-    Install `@next/mdx`, `@mdx-js/react`, and `remark-gfm`. Wrap your Next config with `createMDX({ options: { remarkPlugins: ['remark-gfm'] } })` and add `mdx` to `pageExtensions`. Style markdown elements globally in `mdx-components.tsx`.
+    Install <InlineCode>@next/mdx</InlineCode>, <InlineCode>@mdx-js/react</InlineCode>, and <InlineCode>remark-gfm</InlineCode>. Wrap your Next config with <InlineCode>{"createMDX({ options: { remarkPlugins: ['remark-gfm'] } })"}</InlineCode> and add <InlineCode>mdx</InlineCode> to <InlineCode>pageExtensions</InlineCode>. Style markdown elements globally in <InlineCode>mdx-components.tsx</InlineCode>.
   </Step>
   <Step title="Add next-intl for bilingual routing">
-    Configure locales (`en`, `zh`) with `localePrefix: 'always'` so every URL is prefixed. Put UI strings in `messages/en.json` and `messages/zh.json`. Use `@/i18n/navigation` for locale-aware links throughout the app.
+    Configure locales (<InlineCode>en</InlineCode>, <InlineCode>zh</InlineCode>) with <InlineCode>localePrefix: 'always'</InlineCode> so every URL is prefixed. Put UI strings in <InlineCode>messages/en.json</InlineCode> and <InlineCode>messages/zh.json</InlineCode>. Use <InlineCode>@/i18n/navigation</InlineCode> for locale-aware links throughout the app.
   </Step>
   <Step title="Create a post (MDX + registry)">
-    Each article lives in `content/posts/`. Export a `postMeta` object with title, date, description, and optional tags. Register the import in `lib/posts.ts` — this manual registry keeps types tight and build output predictable.
+    Each article lives in <InlineCode>content/posts/</InlineCode>. Export a <InlineCode>postMeta</InlineCode> object with title, date, description, and optional tags. Register the import in <InlineCode>lib/posts.ts</InlineCode> — this manual registry keeps types tight and build output predictable.
   </Step>
   <Step title="Style with prose-blog and the bento grid">
-    Posts use the `@tailwindcss/typography` plugin via a custom `prose-blog` utility. The home page composes a 12-column bento grid with carousels for images, tags, and upcoming posts — all server-rendered except the carousel controls.
+    Posts use the <InlineCode>@tailwindcss/typography</InlineCode> plugin via a custom <InlineCode>prose-blog</InlineCode> utility. The home page composes a 12-column bento grid with carousels for images, tags, and upcoming posts — all server-rendered except the carousel controls.
   </Step>
 </Steps>
 
@@ -123,11 +123,11 @@ Then run the dev server:
   code="npm run dev"
 />
 
-Visit `/en/posts/my-post` to see it live.
+Visit <InlineCode>/en/posts/my-post</InlineCode> to see it live.
 
 ## Tags and discovery
 
-Tags are optional strings on each post's `postMeta`. They power three things: filter pills on the [posts index](/posts), clickable tags on article headers, and the rotating tag carousel on the home bento grid.
+Tags are optional strings on each post's <InlineCode>postMeta</InlineCode>. They power three things: filter pills on the [posts index](/posts), clickable tags on article headers, and the rotating tag carousel on the home bento grid.
 
 Try the filter below — it uses real posts from this site:
 

@@ -7,6 +7,8 @@ import BuildingJournalEn, {
 import BuildingJournalZh, {
   postMeta as metaBuildingZh,
 } from "@/content/posts/building-the-journal.zh.mdx";
+import BentoGapEn, { postMeta as metaGapEn } from "@/content/posts/bento-gap-rwd.en.mdx";
+import BentoGapZh, { postMeta as metaGapZh } from "@/content/posts/bento-gap-rwd.zh.mdx";
 
 /** Add new posts here after creating `content/posts/<slug>.mdx`. */
 export type PostMeta = {
@@ -50,6 +52,13 @@ const ENTRIES: PostEntry[] = [
     locales: {
       en: { meta: metaBuildingEn, MDXContent: BuildingJournalEn },
       zh: { meta: metaBuildingZh, MDXContent: BuildingJournalZh },
+    },
+  },
+  {
+    slug: "bento-gap-rwd",
+    locales: {
+      en: { meta: metaGapEn, MDXContent: BentoGapEn },
+      zh: { meta: metaGapZh, MDXContent: BentoGapZh },
     },
   },
 ];

@@ -1,0 +1,72 @@
+export const postMeta = {
+  title: "The black gap",
+  date: "2026-06-07",
+  description:
+    "How the home page bento grid calculates its black lines for responsive layouts — one CSS token, no magic borders.",
+  tags: ["design", "bento", "css", "rwd"],
+};
+
+Look closely at the home page and you will notice thin **black lines** between every tile. They are not borders drawn on the cells — they are **gaps** showing through to the black background behind the grid.
+
+Once you see the trick, you can reproduce it anywhere: light cells on a dark canvas, with spacing as the only divider.
+
+## One token controls everything
+
+The entire system hangs on a single CSS custom property in <InlineCode>globals.css</InlineCode>:
+
+<CodeBlock
+  title="app/globals.css"
+  language="css"
+  code={`@theme {
+  --spacing-bento-gap: 8px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-bento-gap: 16px;
+  }
+}`}
+/>
+
+Tailwind v4 maps that token to utilities like <InlineCode>gap-bento-gap</InlineCode> and <InlineCode>p-bento-gap</InlineCode>. Change the variable once and every grid, padding, and carousel accent updates together.
+
+<Callout variant="tip">
+  Mobile uses <InlineCode>8px</InlineCode> gaps; desktop (<InlineCode>768px</InlineCode> and up) doubles to <InlineCode>16px</InlineCode>. The jump keeps tiles readable on small screens without losing the brutalist weight on large ones.
+</Callout>
+
+## How the grid works
+
+The home bento in <InlineCode>home-bento.tsx</InlineCode> stacks three layers:
+
+1. **Outer shell** — <InlineCode>bg-black p-bento-gap</InlineCode> wraps the whole grid. The padding creates a black frame around the edge.
+2. **Main grid** — <InlineCode>gap-bento-gap bg-black</InlineCode> on a 12-column layout. Gap space is transparent, so the black background shows through between cells.
+3. **Cells** — each tile uses <InlineCode>bg-bento-bg</InlineCode> (a warm off-white). Only the cells are light; everything between them stays black.
+
+The author / social block uses the same pattern as a **nested sub-grid**: <InlineCode>gap-bento-gap bg-black</InlineCode> inside a parent cell, so inner gaps match outer gaps exactly.
+
+Carousel prev/next buttons in <InlineCode>image-carousel.tsx</InlineCode> reuse the token too — their border width is set to <InlineCode>var(--spacing-bento-gap)</InlineCode> so control chrome aligns with grid lines.
+
+## RWD reordering
+
+On mobile the grid collapses to a single column. Tiles reorder with Tailwind <InlineCode>{"order-*"}</InlineCode> utilities so the reading flow makes sense (CTA and hero image land in sensible positions) while the gap token stays the same.
+
+On desktop (<InlineCode>md:grid-cols-12</InlineCode>) tiles snap into a strict 50/50 split: 6 + 6 columns per row, with explicit <InlineCode>{"col-span-*"}</InlineCode> and <InlineCode>{"row-start-*"}</InlineCode> placement.
+
+| Breakpoint | Gap | Grid |
+| --- | --- | --- |
+| &lt; 768px | 8px | 1 column, CSS order |
+| ≥ 768px | 16px | 12 columns, 3 rows |
+
+## Try the gap yourself
+
+Drag the slider or tap a preset to see how gap size changes the bento feel:
+
+<GapDemo />
+
+<Callout variant="note">
+  The real site does not expose a slider — the demo is for learning. In production the value is fixed at 8px / 16px via the media query above.
+</Callout>
+
+## What is next
+
+Return to the [home page](/) and resize your browser — watch the gaps step from 8px to 16px at the breakpoint. For the full stack behind this site, read [Building this journal](/posts/building-the-journal).

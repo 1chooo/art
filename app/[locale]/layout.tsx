@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
 
@@ -14,6 +14,11 @@ const display = Playfair_Display({
 const sans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans-body",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 type Props = {
@@ -55,7 +60,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${display.variable} ${sans.variable}`}
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <body

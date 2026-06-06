@@ -66,19 +66,19 @@ export const postMeta = {
 
 <Steps>
   <Step title="建立 Next.js + Tailwind v4 專案">
-    以 create-next-app 建立 App Router + TypeScript 專案。透過 @tailwindcss/postcss 加入 Tailwind v4，並在 globals.css 定義語意化色彩 token——文章用 paper、ink、accent；首頁 bento 用 bento-bg、bento-ink。
+    以 <InlineCode>create-next-app</InlineCode> 建立 App Router + TypeScript 專案。透過 <InlineCode>@tailwindcss/postcss</InlineCode> 加入 Tailwind v4，並在 <InlineCode>globals.css</InlineCode> 定義語意化色彩 token——文章用 <InlineCode>paper</InlineCode>、<InlineCode>ink</InlineCode>、<InlineCode>accent</InlineCode>；首頁 bento 用 <InlineCode>bento-bg</InlineCode>、<InlineCode>bento-ink</InlineCode>。
   </Step>
   <Step title="設定 MDX 與 remark-gfm">
-    安裝 @next/mdx、@mdx-js/react 與 remark-gfm。以 createMDX 包裝 Next 設定，並將 mdx 加入 pageExtensions。在 mdx-components.tsx 統一設定 markdown 元素的樣式。
+    安裝 <InlineCode>@next/mdx</InlineCode>、<InlineCode>@mdx-js/react</InlineCode> 與 <InlineCode>remark-gfm</InlineCode>。以 <InlineCode>createMDX</InlineCode> 包裝 Next 設定，並將 <InlineCode>mdx</InlineCode> 加入 <InlineCode>pageExtensions</InlineCode>。在 <InlineCode>mdx-components.tsx</InlineCode> 統一設定 markdown 元素的樣式。
   </Step>
   <Step title="加入 next-intl 雙語路由">
-    設定 en、zh 語系，並使用 localePrefix: 'always'，讓每個 URL 都帶語系前綴。UI 字串放在 messages/en.json 與 messages/zh.json。全站連結使用 @/i18n/navigation 以保持語系一致。
+    設定 <InlineCode>en</InlineCode>、<InlineCode>zh</InlineCode> 語系，並使用 <InlineCode>localePrefix: 'always'</InlineCode>，讓每個 URL 都帶語系前綴。UI 字串放在 <InlineCode>messages/en.json</InlineCode> 與 <InlineCode>messages/zh.json</InlineCode>。全站連結使用 <InlineCode>@/i18n/navigation</InlineCode> 以保持語系一致。
   </Step>
   <Step title="建立文章（MDX + 註冊表）">
-    每篇文章放在 content/posts/。匯出 postMeta 物件，包含 title、date、description 與可選的 tags。在 lib/posts.ts 手動註冊 import——這種方式型別明確，建置結果可預期。
+    每篇文章放在 <InlineCode>content/posts/</InlineCode>。匯出 <InlineCode>postMeta</InlineCode> 物件，包含 title、date、description 與可選的 tags。在 <InlineCode>lib/posts.ts</InlineCode> 手動註冊 import——這種方式型別明確，建置結果可預期。
   </Step>
   <Step title="以 prose-blog 與 bento 網格完成樣式">
-    文章使用 @tailwindcss/typography 的 prose-blog 工具類。首頁以 12 欄 bento 網格組合圖片、標籤與最新文章輪播——除輪播控制外，皆由 Server Component 渲染。
+    文章使用 <InlineCode>@tailwindcss/typography</InlineCode> 的 <InlineCode>prose-blog</InlineCode> 工具類。首頁以 12 欄 bento 網格組合圖片、標籤與最新文章輪播——除輪播控制外，皆由 Server Component 渲染。
   </Step>
 </Steps>
 
@@ -123,11 +123,11 @@ const ENTRIES: PostEntry[] = [
   code="npm run dev"
 />
 
-前往 `/zh/posts/my-post` 即可預覽。
+前往 <InlineCode>/zh/posts/my-post</InlineCode> 即可預覽。
 
 ## 標籤與探索
 
-標籤是 postMeta 上的可選字串。它們驅動三個功能：[文章列表](/posts) 的篩選 pill、文章頁可點擊的標籤，以及首頁 bento 輪播中的標籤展示。
+標籤是 <InlineCode>postMeta</InlineCode> 上的可選字串。它們驅動三個功能：[文章列表](/posts) 的篩選 pill、文章頁可點擊的標籤，以及首頁 bento 輪播中的標籤展示。
 
 試試下方的篩選器——它使用本站的真實文章：
 

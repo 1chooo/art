@@ -1,0 +1,72 @@
+export const postMeta = {
+  title: "黑色間距",
+  date: "2026-06-07",
+  description:
+    "首頁 bento 網格如何在 RWD 下計算黑色線條——一個 CSS token，不是魔術邊框。",
+  tags: ["design", "bento", "css", "rwd"],
+};
+
+仔細看首頁，你會發現每個格子之間有細細的**黑線**。那不是畫在格子上的 border——而是**間距**，透出背後黑色背景。
+
+看懂這個技巧後，你就能在任何地方重現：深色画布上的浅色格子，只靠 spacing 分隔。
+
+## 一個 token 控制全部
+
+整個系統掛在 <InlineCode>globals.css</InlineCode> 裡的一個 CSS 自訂屬性：
+
+<CodeBlock
+  title="app/globals.css"
+  language="css"
+  code={`@theme {
+  --spacing-bento-gap: 8px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-bento-gap: 16px;
+  }
+}`}
+/>
+
+Tailwind v4 會把它對應成 <InlineCode>gap-bento-gap</InlineCode>、<InlineCode>p-bento-gap</InlineCode> 等工具類。改一次變數，所有 grid、padding 和輪播裝飾都會一起更新。
+
+<Callout variant="tip" title="提示">
+  手機版間距 <InlineCode>8px</InlineCode>；桌面版（<InlineCode>768px</InlineCode> 以上）加倍為 <InlineCode>16px</InlineCode>。小螢幕保持可讀，大螢幕保留粗獷感。
+</Callout>
+
+## 網格如何運作
+
+<InlineCode>home-bento.tsx</InlineCode> 裡的首頁 bento 疊了三層：
+
+1. **外殼** — <InlineCode>bg-black p-bento-gap</InlineCode> 包住整個 grid，padding 形成外框黑邊。
+2. **主 grid** — 12 欄布局加上 <InlineCode>gap-bento-gap bg-black</InlineCode>。gap 區域透明，黑色背景從縫隙露出。
+3. **格子** — 每個 tile 用 <InlineCode>bg-bento-bg</InlineCode>（暖色 off-white）。只有格子是浅色，其間一律是黑。
+
+作者／社群區塊是**巢狀子 grid**，同樣用 <InlineCode>gap-bento-gap bg-black</InlineCode>，內外間距完全一致。
+
+<InlineCode>image-carousel.tsx</InlineCode> 的輪播按鈕也重用這個 token——border 寬度設為 <InlineCode>var(--spacing-bento-gap)</InlineCode>，控制元件與 grid 線對齊。
+
+## RWD 排序
+
+手機版 grid 收成單欄。格子用 Tailwind <InlineCode>{"order-*"}</InlineCode> 重新排序，閱讀動線更合理（CTA、主圖落在適當位置），間距 token 不變。
+
+桌面版（<InlineCode>md:grid-cols-12</InlineCode>）則是嚴格的 50/50 分割：每列 6 + 6 欄，以 <InlineCode>{"col-span-*"}</InlineCode> 和 <InlineCode>{"row-start-*"}</InlineCode> 定位。
+
+| 斷點 | 間距 | Grid |
+| --- | --- | --- |
+| &lt; 768px | 8px | 單欄 + CSS order |
+| ≥ 768px | 16px | 12 欄、3 列 |
+
+## 動手調整間距
+
+拖曳滑桿或點 preset，感受 gap 大小如何改變 bento 質感：
+
+<GapDemo locale="zh" />
+
+<Callout variant="note" title="備註">
+  正式網站沒有滑桿——示範僅供理解。production 透過上方 media query 固定 8px / 16px。
+</Callout>
+
+## 接下來
+
+回到[首頁](/)並縮放瀏覽器——觀察間距在斷點處從 8px 跳到 16px。想了解完整技術堆疊，請讀[打造這本日誌](/posts/building-the-journal)。

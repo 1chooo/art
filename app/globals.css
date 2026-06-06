@@ -50,4 +50,5 @@
   @apply prose-a:text-accent prose-a:no-underline hover:prose-a:underline;
   @apply prose-strong:text-ink prose-blockquote:border-border prose-blockquote:text-ink-muted;
   @apply prose-code:text-ink prose-code:bg-surface prose-code:px-1 prose-code:py-0.5 prose-code:rounded;
+  @apply prose-code:font-mono;
 }
