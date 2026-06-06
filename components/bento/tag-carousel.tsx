@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 import { Link } from "@/i18n/navigation";
 import { BentoLabel } from "@/components/bento/bento-label";
+import { bentoCellGroup } from "@/lib/bento-cell";
 
 const INTERVAL_MS = 5000;
 
@@ -40,7 +41,8 @@ export function TagCarousel({ tags, label, tagFallback, className }: Props) {
   return (
     <section
       className={clsx(
-        "bg-bento-bg flex flex-col items-center justify-center p-4 text-center md:col-span-3 md:p-5",
+        "flex flex-col items-center justify-center p-4 text-center md:col-span-3 md:p-5",
+        bentoCellGroup,
         className,
       )}
       onMouseEnter={() => setPaused(true)}
@@ -59,13 +61,13 @@ export function TagCarousel({ tags, label, tagFallback, className }: Props) {
         <Link
           key={currentTag}
           href={`/posts?tag=${encodeURIComponent(currentTag)}`}
-          className="font-(family-name:--font-serif-display) text-bento-ink text-xl font-bold transition-opacity hover:opacity-70 md:text-2xl"
+          className="font-(family-name:--font-serif-display) text-xl font-bold md:text-2xl"
           style={{ animation: "bento-tag-in 0.35s ease-out" }}
         >
           {currentTag}
         </Link>
       ) : (
-        <p className="font-(family-name:--font-serif-display) text-bento-ink text-xl font-bold md:text-2xl">
+        <p className="font-(family-name:--font-serif-display) text-xl font-bold md:text-2xl">
           {tagFallback}
         </p>
       )}

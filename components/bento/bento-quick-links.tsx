@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { bentoCellHover } from "@/lib/bento-cell";
 import { BENTO_QUICK_LINKS } from "@/lib/bento-links";
 
-const cellClass =
-  "text-bento-ink hover:bg-bento-ink hover:text-bento-bg bg-bento-bg flex items-center justify-center p-3 text-center transition-colors font-(family-name:--font-serif-display) text-sm font-bold md:text-base";
+const cellClass = `text-bento-ink bg-bento-bg flex items-center justify-center p-3 text-center font-(family-name:--font-serif-display) text-sm font-bold md:text-base ${bentoCellHover}`;
 
 function isExternalHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");

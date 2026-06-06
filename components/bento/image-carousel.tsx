@@ -60,6 +60,10 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
         priority={safeIndex === 0}
         style={{ animation: "bento-tag-in 0.35s ease-out" }}
       />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-1 bg-bento-ink opacity-0 transition-opacity group-hover:opacity-25"
+      />
       {/* Top-right carousel controls – styled as grid cells */}
       <div className="absolute top-0 right-0 z-10 flex gap-bento-gap bg-black">
         <button

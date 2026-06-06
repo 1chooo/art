@@ -4,6 +4,11 @@ import { getAllPosts, getAllTags } from "@/lib/posts";
 import { getFeaturedProjects } from "@/lib/projects";
 import { getWeather } from "@/lib/weather";
 import { BentoLabel } from "@/components/bento/bento-label";
+import {
+  bentoCellGroup,
+  bentoCellHover,
+  bentoCellInvertedHover,
+} from "@/lib/bento-cell";
 import { BentoQuickLinks } from "@/components/bento/bento-quick-links";
 import { ImageCarousel } from "@/components/bento/image-carousel";
 import { TagCarousel } from "@/components/bento/tag-carousel";
@@ -64,12 +69,14 @@ export async function HomeBento() {
         {/* ── Row 1 ── */}
 
         {/* Copyright */}
-        <section className="bg-bento-bg order-1 flex flex-col items-center justify-center p-4 text-center md:order-0 md:col-span-3 md:p-5">
+        <section
+          className={`order-1 flex flex-col items-center justify-center p-4 text-center md:order-0 md:col-span-3 md:p-5 ${bentoCellGroup}`}
+        >
           <BentoLabel>{t("copyrightLabel")}</BentoLabel>
           <p className="font-(family-name:--font-serif-display) text-xl font-bold md:text-2xl">
             {tr("brand")}
           </p>
-          <p className="text-bento-ink/70 mt-2 max-w-xs text-sm font-medium md:hidden">
+          <p className="mt-2 max-w-xs text-sm font-medium opacity-70 md:hidden">
             {tm("description")}
           </p>
         </section>
@@ -83,7 +90,9 @@ export async function HomeBento() {
         />
 
         {/* Upcoming */}
-        <section className="bg-bento-bg order-2 flex flex-col md:order-0 md:col-span-6">
+        <section
+          className={`order-2 flex flex-col md:order-0 md:col-span-6 ${bentoCellGroup}`}
+        >
           <UpcomingCarousel
             slides={upcomingSlides}
             prevLabel={t("carouselPrev")}
@@ -95,7 +104,9 @@ export async function HomeBento() {
         {/* ── Row 2 ── */}
 
         {/* Hero image */}
-        <div className="bg-bento-bg order-5 md:order-0 md:col-span-6 md:row-start-2">
+        <div
+          className={`group order-5 bg-bento-bg md:order-0 md:col-span-6 md:row-start-2`}
+        >
           <ImageCarousel
             images={heroImages}
             prevLabel={t("carouselPrev")}
@@ -104,7 +115,9 @@ export async function HomeBento() {
         </div>
 
         {/* Project carousel */}
-        <section className="bg-bento-bg order-4 flex flex-col md:order-0 md:col-span-3 md:row-start-2">
+        <section
+          className={`order-4 flex flex-col md:order-0 md:col-span-3 md:row-start-2 ${bentoCellGroup}`}
+        >
           <UpcomingCarousel
             slides={projectSlides}
             prevLabel={t("carouselPrev")}
@@ -118,7 +131,7 @@ export async function HomeBento() {
           {/* Author name */}
           <Link
             href="/about"
-            className="bg-bento-bg hover:bg-bento-ink hover:text-bento-bg col-span-2 hidden flex-col items-center justify-center p-3 text-center transition-colors md:flex"
+            className={`col-span-2 hidden flex-col items-center justify-center bg-bento-bg p-3 text-center md:flex ${bentoCellHover}`}
           >
             <BentoLabel>{t("authorLabel")}</BentoLabel>
             <p className="font-(family-name:--font-serif-display) text-lg font-bold">
@@ -130,7 +143,9 @@ export async function HomeBento() {
           <BentoQuickLinks />
 
           {/* Weather */}
-          <div className="bg-bento-bg col-span-2 flex flex-1 flex-col items-center justify-center p-3 text-center">
+          <div
+            className={`col-span-2 flex flex-1 flex-col items-center justify-center bg-bento-bg p-3 text-center ${bentoCellHover}`}
+          >
             <BentoLabel>{t("weatherLabel")}</BentoLabel>
             <p className="font-(family-name:--font-serif-display) text-base font-bold md:text-lg">
               {weather
@@ -146,18 +161,22 @@ export async function HomeBento() {
         {/* ── Row 3 ── */}
 
         {/* Quote — black background, white text */}
-        <section className="bg-bento-ink text-bento-bg order-8 flex items-center justify-center p-6 text-center md:order-0 md:col-span-6 md:row-start-3 md:p-8">
+        <section
+          className={`bg-bento-ink text-bento-bg order-8 flex items-center justify-center p-6 text-center md:order-0 md:col-span-6 md:row-start-3 md:p-8 ${bentoCellInvertedHover}`}
+        >
           <p className="font-(family-name:--font-serif-display) max-w-xl text-lg font-bold md:text-xl">
             {t("quote")}
           </p>
         </section>
 
         {/* CTA */}
-        <section className="bg-bento-bg order-3 flex items-center justify-center p-6 text-center md:order-0 md:col-span-6 md:row-start-3 md:p-8">
+        <section
+          className={`order-3 flex items-center justify-center p-6 text-center md:order-0 md:col-span-6 md:row-start-3 md:p-8 ${bentoCellGroup}`}
+        >
           {latest ? (
             <Link
               href={`/posts/${latest.slug}`}
-              className="text-bento-ink font-(family-name:--font-serif-display) inline-block text-lg font-bold transition-colors hover:opacity-70 md:text-2xl"
+              className="font-(family-name:--font-serif-display) inline-block text-lg font-bold md:text-2xl"
             >
               {t("cta")}
             </Link>
