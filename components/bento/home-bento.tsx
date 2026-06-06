@@ -116,12 +116,15 @@ export async function HomeBento() {
         {/* Author + Social + Weather — nested sub-grid */}
         <div className="order-6 grid grid-cols-2 gap-bento-gap bg-black md:order-0 md:col-span-3 md:row-start-2">
           {/* Author name */}
-          <div className="bg-bento-bg col-span-2 hidden flex-col items-center justify-center p-3 text-center md:flex">
+          <Link
+            href="/about"
+            className="bg-bento-bg hover:bg-bento-ink hover:text-bento-bg col-span-2 hidden flex-col items-center justify-center p-3 text-center transition-colors md:flex"
+          >
             <BentoLabel>{t("authorLabel")}</BentoLabel>
             <p className="font-(family-name:--font-serif-display) text-lg font-bold">
               {tr("brand")}
             </p>
-          </div>
+          </Link>
 
           {/* Quick links — customize in lib/bento-links.ts */}
           <BentoQuickLinks />
