@@ -50,23 +50,23 @@ export function MobileNav() {
               </Link>
             </li>
             <li>
+              <Link
+                href="/about"
+                onClick={close}
+                className="text-bento-ink flex min-h-11 items-center hover:underline"
+              >
+                {t("about")}
+              </Link>
+            </li>
+            <li>
               <a
-                href="https://github.com"
+                href="https://github.com/1chooo/art"
                 onClick={close}
                 className="text-bento-ink flex min-h-11 items-center hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("share")}
-              </a>
-            </li>
-            <li>
-              <a
-                href="#intro"
-                onClick={close}
-                className="text-bento-ink flex min-h-11 items-center hover:underline"
-              >
-                {t("intro")}
+                {t("code")}
               </a>
             </li>
           </ul>

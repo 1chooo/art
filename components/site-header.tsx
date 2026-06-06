@@ -31,18 +31,18 @@ export async function SiteHeader() {
               </Link>
             </li>
             <li>
+              <Link href="/about" className="text-bento-ink hover:underline">
+                {t("about")}
+              </Link>
+            </li>
+            <li>
               <a
-                href="https://github.com"
+                href="https://github.com/1chooo/art"
                 className="text-bento-ink hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("share")}
-              </a>
-            </li>
-            <li>
-              <a href="#intro" className="text-bento-ink hover:underline">
-                {t("intro")}
+                {t("code")}
               </a>
             </li>
           </ul>

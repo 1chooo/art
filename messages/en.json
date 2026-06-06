@@ -7,8 +7,26 @@
   "nav": {
     "home": "Home",
     "note": "Note",
-    "share": "Share",
-    "intro": "Intro"
+    "code": "Code",
+    "about": "About"
+  },
+  "about": {
+    "title": "About",
+    "description": "Software builder, writer, and photographer.",
+    "lead": "I'm Lin Hugo — a software builder and writer studying Computer Science at USC Viterbi. By day, I design and architect scalable software systems. On weekends, I'm a photographer capturing the human touch in fleeting moments.",
+    "philosophy": "You are too focused on the future without realizing that today is exactly what you prayed for years ago.",
+    "backgroundHeading": "Background",
+    "background": "I grew up studying Atmospheric Sciences at National Central University in Taiwan, with a minor in Programming Design. The path from weather systems to software turned out to be less of a detour and more of a natural one — both fields are about modeling complex systems and making sense of them. I'm now pursuing a Master of Science in Computer Science at USC Viterbi, where my interests sit at the intersection of web development and large-scale software systems.",
+    "workHeading": "Work",
+    "work": "My industry journey started at PEGATRON as an AI Engineer intern, building an LLM proof-of-concept presented to the CTO. I became an AWS Campus Ambassador, running technical workshops for 700+ developers. At eCloudvalley, I led a five-person team to ship a serverless AWS Bedrock solution with 95% classification accuracy. Most recently at Futurenest, I shipped Django REST APIs with full test coverage and integrated a Next.js chat interface with a custom backend.",
+    "beyondHeading": "Beyond code",
+    "beyond": "I shoot film and digital photography whenever I can — mostly street and travel. There's something about the discipline of a single frame that sharpens the way you see the world, and I carry that same sensibility into writing and engineering.",
+    "projectsHeading": "Projects",
+    "projects": "A few things I've built:",
+    "project1chooo": "personal site built with Next.js, Tailwind CSS, and MDX",
+    "projectArt": "this journal — brutalist bento grid with MDX posts",
+    "projectVCard": "open-source portfolio template (300+ stars)",
+    "connect": "Want to collaborate or chat? Find me at"
   },
   "footer": {
     "note": "Built with Next.js & MDX."

@@ -7,8 +7,26 @@
   "nav": {
     "home": "首頁",
     "note": "筆記",
-    "share": "分享",
-    "intro": "簡介"
+    "code": "程式碼",
+    "about": "關於"
+  },
+  "about": {
+    "title": "關於",
+    "description": "軟體開發者、寫作者與攝影師。",
+    "lead": "我是林 Hugo（Lin Hugo）—— 一位軟體開發者與寫作者，目前在 USC Viterbi 攻讀電腦科學。平日我設計並架構可擴展的軟體系統；週末則用相機捕捉轉瞬即逝的人間溫度。",
+    "philosophy": "你太專注於未來，卻沒有意識到，今天正是你多年前所祈求的樣子。",
+    "backgroundHeading": "背景",
+    "background": "我在台灣中央大學主修大氣科學，副修程式設計。從天氣系統走向軟體，與其說是轉彎，不如說是自然延伸——兩者都在建模複雜系統並從中找出規律。我現正於 USC Viterbi 攻讀電腦科學碩士，專注於網頁開發與大型軟體系統的交會處。",
+    "workHeading": "工作經歷",
+    "work": "實習起於和碩（PEGATRON）擔任 AI 工程師，打造大型語言模型概念驗證並向 CTO 簡報。之後成為 AWS Campus Ambassador，為 700 多位開發者舉辦技術工作坊。在 eCloudvalley 帶領五人團隊，以 AWS Bedrock 無伺服器架構推出分類準確率達 95% 的解決方案。最近在 Futurenest 負責 Django REST API（100% 測試覆蓋率）與 Next.js 聊天介面的後端整合。",
+    "beyondHeading": "程式之外",
+    "beyond": "我盡可能地拍攝底片與數位攝影——多半是街頭與旅行。單一畫面的紀律，會磨礪你看世界的方式；我把同樣的敏銳帶進寫作與工程裡。",
+    "projectsHeading": "專案",
+    "projects": "我做過的一些作品：",
+    "project1chooo": "以 Next.js、Tailwind CSS 與 MDX 打造的個人網站",
+    "projectArt": "這本筆記——粗獷主義 Bento 版面與 MDX 文章",
+    "projectVCard": "開源作品集模板（300+ stars）",
+    "connect": "想合作或聊聊？歡迎到"
   },
   "footer": {
     "note": "使用 Next.js 與 MDX 構建。"
