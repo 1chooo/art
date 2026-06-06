@@ -35,14 +35,14 @@ export async function HomeBento() {
   ];
 
   return (
-    <div className="flex flex-1 flex-col bg-black p-2 md:p-3">
+    <div className="flex flex-1 flex-col bg-black p-bento-gap">
       {/*
         Desktop: 12-col grid, 3 rows, strict 50/50 split (6+6)
         Row 1: Copyright(3)+Tag(3) | Upcoming(6)
         Row 2: Image(6)            | Project(3)+Author/Social/Weather(3)
         Row 3: Quote(6)            | CTA(6)
       */}
-      <div className="grid flex-1 grid-cols-1 gap-2 bg-black md:grid-cols-12 md:grid-rows-[auto_1fr_auto] md:gap-4">
+      <div className="grid flex-1 grid-cols-1 gap-bento-gap bg-black md:grid-cols-12 md:grid-rows-[auto_1fr_auto]">
         {/* ── Row 1 ── */}
 
         {/* Copyright */}
@@ -92,7 +92,7 @@ export async function HomeBento() {
         {/* Author + Social + Weather — nested sub-grid */}
         <div
           id="intro"
-          className="grid grid-cols-2 gap-2 bg-black md:col-span-3 md:row-start-2 md:gap-4"
+          className="grid grid-cols-2 gap-bento-gap bg-black md:col-span-3 md:row-start-2"
         >
           {/* Author name */}
           <div className="bg-bento-bg col-span-2 flex flex-col items-center justify-center p-3 text-center">

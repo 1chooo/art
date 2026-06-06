@@ -12,6 +12,14 @@
   /* Brutalist bento (home) */
   --color-bento-bg: oklch(0.97 0.02 95);
   --color-bento-ink: oklch(0.12 0 0);
+  /* Bento grid gap — controls all inter-cell spacing and carousel border accents */
+  --spacing-bento-gap: 8px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-bento-gap: 16px;
+  }
 }
 
 @keyframes bento-tag-in {
