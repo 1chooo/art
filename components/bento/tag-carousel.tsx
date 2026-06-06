@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Link } from "@/i18n/navigation";
 import { BentoLabel } from "@/components/bento/bento-label";
 
-const INTERVAL_MS = 3000;
+const INTERVAL_MS = 5000;
 
 type Props = {
   tags: string[];

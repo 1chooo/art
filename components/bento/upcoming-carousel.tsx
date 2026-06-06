@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+
+const INTERVAL_MS = 5000;
 
 export type UpcomingSlide = {
   title: string;
@@ -19,14 +21,42 @@ type Props = {
 
 export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props) {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const n = slides.length || 1;
   const safeIndex = ((index % n) + n) % n;
   const slide = slides[safeIndex] ?? slides[0];
 
+  const tick = useCallback(() => {
+    if (paused || slides.length <= 1) return;
+    setIndex((i) => i + 1);
+  }, [paused, slides.length]);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const id = window.setInterval(tick, INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [slides.length, tick]);
+
+  const resumeAfterTouch = () => {
+    window.setTimeout(() => setPaused(false), 500);
+  };
+
   if (!slide) return null;
 
   return (
-    <div className="relative flex h-full flex-col">
+    <div
+      className="relative flex h-full flex-col"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={resumeAfterTouch}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          setPaused(false);
+        }
+      }}
+    >
       {/* Top-right carousel controls – styled as grid cells */}
       <div className="absolute top-0 right-0 z-10 flex gap-bento-gap bg-black">
         <button
@@ -57,7 +87,11 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
       </div>
 
       {/* Content */}
-      <div className="flex min-h-[200px] flex-1 flex-col justify-center px-5 py-4 md:min-h-0 md:px-8 md:py-6">
+      <div
+        key={safeIndex}
+        className="flex min-h-[200px] flex-1 flex-col justify-center px-5 py-4 md:min-h-0 md:px-8 md:py-6"
+        style={{ animation: "bento-tag-in 0.35s ease-out" }}
+      >
         {slide.href ? (
           <Link
             href={slide.href}
