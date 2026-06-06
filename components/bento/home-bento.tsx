@@ -4,7 +4,7 @@ import { getAllPosts, getAllTags } from "@/lib/posts";
 import { getFeaturedProjects } from "@/lib/projects";
 import { getWeather } from "@/lib/weather";
 import { BentoLabel } from "@/components/bento/bento-label";
-import { BentoSocialIcons } from "@/components/bento/bento-social-icons";
+import { BentoQuickLinks } from "@/components/bento/bento-quick-links";
 import { ImageCarousel } from "@/components/bento/image-carousel";
 import { TagCarousel } from "@/components/bento/tag-carousel";
 import { UpcomingCarousel } from "@/components/bento/upcoming-carousel";
@@ -123,8 +123,8 @@ export async function HomeBento() {
             </p>
           </div>
 
-          {/* Social icons 2×2 — customize in lib/bento-social.ts */}
-          <BentoSocialIcons />
+          {/* Quick links — customize in lib/bento-links.ts */}
+          <BentoQuickLinks />
 
           {/* Weather */}
           <div className="bg-bento-bg col-span-2 flex flex-1 flex-col items-center justify-center p-3 text-center">

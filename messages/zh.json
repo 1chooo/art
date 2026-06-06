@@ -41,6 +41,11 @@
     "projectFallbackTitle": "專案",
     "projectFallbackDesc": "瀏覽精選作品與實驗。",
     "authorLabel": "作者",
+    "quickLinks": {
+      "location": "舊金山",
+      "github": "GitHub",
+      "email": "hugo@1chooo.com"
+    },
     "weatherLabel": "天氣",
     "weatherLine": "{temp}°C · {condition}",
     "weatherUnavailable": "—",

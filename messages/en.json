@@ -41,6 +41,11 @@
     "projectFallbackTitle": "Projects",
     "projectFallbackDesc": "Browse featured work and experiments.",
     "authorLabel": "Author",
+    "quickLinks": {
+      "location": "San Francisco",
+      "github": "GitHub",
+      "email": "hugo@1chooo.com"
+    },
     "weatherLabel": "Weather",
     "weatherLine": "{temp}°C · {condition}",
     "weatherUnavailable": "—",
