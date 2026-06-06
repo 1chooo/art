@@ -2,13 +2,11 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { NavLinks } from "@/components/nav-links";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
-  const t = useTranslations("nav");
 
   const close = () => setOpen(false);
 
@@ -31,44 +29,7 @@ export function MobileNav() {
           className="border-bento-ink/20 absolute inset-x-0 top-full border-b bg-bento-bg px-4 py-4 shadow-sm"
         >
           <ul className="flex flex-col gap-1 text-base font-bold">
-            <li>
-              <Link
-                href="/"
-                onClick={close}
-                className="text-bento-ink flex min-h-11 items-center hover:underline"
-              >
-                {t("home")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/posts"
-                onClick={close}
-                className="text-bento-ink flex min-h-11 items-center hover:underline"
-              >
-                {t("note")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                onClick={close}
-                className="text-bento-ink flex min-h-11 items-center hover:underline"
-              >
-                {t("about")}
-              </Link>
-            </li>
-            <li>
-              <a
-                href="https://github.com/1chooo/art"
-                onClick={close}
-                className="text-bento-ink flex min-h-11 items-center hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("code")}
-              </a>
-            </li>
+            <NavLinks variant="mobile" onNavigate={close} />
           </ul>
           <div className="mt-4">
             <LocaleSwitcher />

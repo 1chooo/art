@@ -2,9 +2,9 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { MobileNav } from "@/components/mobile-nav";
+import { NavLinks } from "@/components/nav-links";
 
 export async function SiteHeader() {
-  const t = await getTranslations("nav");
   const tr = await getTranslations();
   return (
     <header className="bg-bento-bg sticky top-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top))]">
@@ -20,31 +20,7 @@ export async function SiteHeader() {
 
         <nav className="hidden flex-wrap items-center justify-end gap-3 md:flex md:gap-6">
           <ul className="flex flex-wrap items-center gap-3 text-sm font-bold md:gap-5 md:text-base">
-            <li>
-              <Link href="/" className="text-bento-ink hover:underline">
-                {t("home")}
-              </Link>
-            </li>
-            <li>
-              <Link href="/posts" className="text-bento-ink hover:underline">
-                {t("note")}
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="text-bento-ink hover:underline">
-                {t("about")}
-              </Link>
-            </li>
-            <li>
-              <a
-                href="https://github.com/1chooo/art"
-                className="text-bento-ink hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("code")}
-              </a>
-            </li>
+            <NavLinks variant="desktop" />
           </ul>
           <LocaleSwitcher />
         </nav>
