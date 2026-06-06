@@ -2,6 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Code2, Mail, Share2, Video } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getAllPosts, getAllTags } from "@/lib/posts";
+import { getFeaturedProjects } from "@/lib/projects";
 import { BentoLabel } from "@/components/bento/bento-label";
 import { ImageCarousel } from "@/components/bento/image-carousel";
 import { TagCarousel } from "@/components/bento/tag-carousel";
@@ -16,6 +17,7 @@ export async function HomeBento() {
   const tm = await getTranslations("metadata");
   const tr = await getTranslations();
   const posts = await getAllPosts(locale);
+  const projects = await getFeaturedProjects(locale);
   const tagNames = (await getAllTags()).map((s) => s.tag);
   const latest = posts[0];
   const upcomingSlides =
@@ -30,6 +32,21 @@ export async function HomeBento() {
           description: t("upcomingFallbackDesc"),
         },
       ];
+
+  const projectSlides =
+    projects.length > 0
+      ? projects.map((p) => ({
+          title: p.title,
+          description: p.description,
+          href: `/projects/${p.slug}`,
+        }))
+      : [
+          {
+            title: t("projectFallbackTitle"),
+            description: t("projectFallbackDesc"),
+            href: "/projects" as const,
+          },
+        ];
 
   const heroImages = [
     { src: "/opengraph-image.png", alt: "Gallery" },
@@ -87,12 +104,14 @@ export async function HomeBento() {
           />
         </div>
 
-        {/* Project */}
-        <section className="bg-bento-bg order-4 flex flex-col items-center justify-center p-6 text-center md:order-0 md:col-span-3 md:row-start-2">
-          <BentoLabel>{t("projectLabel")}</BentoLabel>
-          <p className="font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-2xl">
-            {t("projectTitle")}
-          </p>
+        {/* Project carousel */}
+        <section className="bg-bento-bg order-4 flex flex-col md:order-0 md:col-span-3 md:row-start-2">
+          <UpcomingCarousel
+            slides={projectSlides}
+            prevLabel={t("carouselPrev")}
+            nextLabel={t("carouselNext")}
+            label={t("projectLabel")}
+          />
         </section>
 
         {/* Author + Social + Weather — nested sub-grid */}

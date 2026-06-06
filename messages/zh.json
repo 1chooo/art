@@ -7,6 +7,7 @@
   "nav": {
     "home": "首頁",
     "note": "筆記",
+    "projects": "專案",
     "code": "程式碼",
     "about": "關於"
   },
@@ -37,7 +38,8 @@
     "tagFallback": "程式",
     "upcomingLabel": "即將推出",
     "projectLabel": "專案",
-    "projectTitle": "大氣預測",
+    "projectFallbackTitle": "專案",
+    "projectFallbackDesc": "瀏覽精選作品與實驗。",
     "authorLabel": "作者",
     "weatherLabel": "天氣",
     "weatherLine": "24°C · 晴",
@@ -51,6 +53,19 @@
   "post": {
     "back": "← 回到筆記",
     "readInLocale": "閱讀{locale, select, en {英文版} zh {中文版} other {其他語言}}"
+  },
+  "projects": {
+    "title": "專案",
+    "description": "我做過的一些作品——從個人網站、開源模板到週末實驗。",
+    "readMore": "閱讀更多 →",
+    "miniHeading": "其他小型專案（完整列表見 GitHub）：",
+    "empty": "尚無專案。"
+  },
+  "project": {
+    "back": "← 專案",
+    "readInLocale": "閱讀{locale, select, en {英文版} zh {中文版} other {其他語言}}",
+    "visitSite": "造訪網站",
+    "viewRepo": "查看原始碼"
   },
   "posts": {
     "title": "所有文章",

@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 export type UpcomingSlide = {
   title: string;
   description: string;
+  href?: string;
 };
 
 type Props = {
@@ -56,9 +58,18 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
 
       {/* Content */}
       <div className="flex min-h-[200px] flex-1 flex-col justify-center px-5 py-4 md:min-h-0 md:px-8 md:py-6">
-        <h3 className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl">
-          {slide.title}
-        </h3>
+        {slide.href ? (
+          <Link
+            href={slide.href}
+            className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight transition-colors hover:opacity-70 md:text-3xl"
+          >
+            {slide.title}
+          </Link>
+        ) : (
+          <h3 className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl">
+            {slide.title}
+          </h3>
+        )}
         <p className="text-bento-ink mt-2 text-sm font-medium leading-snug opacity-80 md:mt-3 md:text-base">
           {slide.description}
         </p>

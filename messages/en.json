@@ -7,6 +7,7 @@
   "nav": {
     "home": "Home",
     "note": "Note",
+    "projects": "Projects",
     "code": "Code",
     "about": "About"
   },
@@ -37,7 +38,8 @@
     "tagFallback": "Programming",
     "upcomingLabel": "Upcoming",
     "projectLabel": "Project",
-    "projectTitle": "Atmospheric Prediction",
+    "projectFallbackTitle": "Projects",
+    "projectFallbackDesc": "Browse featured work and experiments.",
     "authorLabel": "Author",
     "weatherLabel": "Weather",
     "weatherLine": "24°C · Clear",
@@ -51,6 +53,19 @@
   "post": {
     "back": "← Journal",
     "readInLocale": "Read in {locale, select, en {English} zh {中文} other {another language}}"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Things I've built — from personal sites to open-source templates and weekend experiments.",
+    "readMore": "Read more →",
+    "miniHeading": "My other mini projects (find all of them on GitHub):",
+    "empty": "No projects yet."
+  },
+  "project": {
+    "back": "← Projects",
+    "readInLocale": "Read in {locale, select, en {English} zh {中文} other {another language}}",
+    "visitSite": "Visit site",
+    "viewRepo": "View repo"
   },
   "posts": {
     "title": "All posts",
