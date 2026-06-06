@@ -15,8 +15,8 @@ export async function HomeBento() {
   const t = await getTranslations("home");
   const tm = await getTranslations("metadata");
   const tr = await getTranslations();
-  const posts = getAllPosts(locale);
-  const tagNames = getAllTags().map((s) => s.tag);
+  const posts = await getAllPosts(locale);
+  const tagNames = (await getAllTags()).map((s) => s.tag);
   const latest = posts[0];
   const upcomingSlides =
     posts.length > 0
@@ -96,10 +96,7 @@ export async function HomeBento() {
         </section>
 
         {/* Author + Social + Weather — nested sub-grid */}
-        <div
-          id="intro"
-          className="order-6 grid grid-cols-2 gap-bento-gap bg-black md:order-0 md:col-span-3 md:row-start-2"
-        >
+        <div className="order-6 grid grid-cols-2 gap-bento-gap bg-black md:order-0 md:col-span-3 md:row-start-2">
           {/* Author name */}
           <div className="bg-bento-bg col-span-2 hidden flex-col items-center justify-center p-3 text-center md:flex">
             <BentoLabel>{t("authorLabel")}</BentoLabel>
@@ -110,7 +107,7 @@ export async function HomeBento() {
 
           {/* Social icons 2×2 */}
           <a
-            href="https://github.com"
+            href="https://github.com/1chooo/art"
             target="_blank"
             rel="noopener noreferrer"
             className={`${iconBox} bg-bento-bg p-3`}

@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import {
-  getPostEntry,
+  getAvailableLocales,
   getPostSlugs,
+  resolvePostFilename,
   type PostLocale,
+  type PostMeta,
 } from "@/lib/posts";
 
 type Props = {
@@ -14,7 +16,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
+  const slugs = await getPostSlugs();
   return routing.locales.flatMap((locale) =>
     slugs.map((slug) => ({ locale, slug })),
   );
@@ -22,11 +24,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug, locale } = await props.params;
-  const entry = getPostEntry(slug, locale as PostLocale);
-  if (!entry) return {};
+  const filename = await resolvePostFilename(slug, locale as PostLocale);
+  if (!filename) return {};
+  const { postMeta } = await import(`@/content/posts/${filename}`);
   return {
-    title: entry.meta.title,
-    description: entry.meta.description,
+    title: postMeta.title,
+    description: postMeta.description,
   };
 }
 
@@ -45,10 +48,14 @@ function formatDate(iso: string, locale: string) {
 export default async function PostPage(props: Props) {
   const { slug, locale } = await props.params;
   const postLocale = locale as PostLocale;
-  const entry = getPostEntry(slug, postLocale);
-  if (!entry) notFound();
+  const filename = await resolvePostFilename(slug, postLocale);
+  if (!filename) notFound();
 
-  const { meta, MDXContent, availableLocales } = entry;
+  const { default: MDXContent, postMeta } = await import(
+    `@/content/posts/${filename}`
+  );
+  const meta = postMeta as PostMeta;
+  const availableLocales = await getAvailableLocales(slug);
   const t = await getTranslations("post");
 
   const alternateLocale =
