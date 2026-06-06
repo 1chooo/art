@@ -4,17 +4,18 @@ import {
   Code2,
   ExternalLink,
   Globe,
-  Link,
+  Link as LinkIcon,
   Mail,
+  MapPin,
   MessageCircle,
   Music,
   Play,
   Rss,
   Send,
   Share2,
-  Video,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import {
   BENTO_SOCIAL_LINKS,
   type BentoSocialIcon,
@@ -23,10 +24,10 @@ import {
 const iconMap: Record<BentoSocialIcon, LucideIcon> = {
   code: Code2,
   share: Share2,
-  video: Video,
+  location: MapPin,
   mail: Mail,
   globe: Globe,
-  link: Link,
+  link: LinkIcon,
   rss: Rss,
   send: Send,
   message: MessageCircle,
@@ -49,20 +50,32 @@ export function BentoSocialIcons() {
     <>
       {BENTO_SOCIAL_LINKS.map(({ href, label, icon }) => {
         const Icon = iconMap[icon];
-        const external = isExternalHref(href);
+        const className = `${iconBox} bg-bento-bg p-3`;
+
+        if (isExternalHref(href)) {
+          return (
+            <a
+              key={`${href}-${label}`}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+              aria-label={label}
+            >
+              <Icon className="size-5" strokeWidth={2.5} />
+            </a>
+          );
+        }
 
         return (
-          <a
+          <Link
             key={`${href}-${label}`}
-            href={href}
-            {...(external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-            className={`${iconBox} bg-bento-bg p-3`}
+            href={href as "/location"}
+            className={className}
             aria-label={label}
           >
             <Icon className="size-5" strokeWidth={2.5} />
-          </a>
+          </Link>
         );
       })}
     </>

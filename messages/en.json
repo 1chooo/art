@@ -89,5 +89,21 @@
     "allTags": "All",
     "empty": "No posts match your filters.",
     "clearFilters": "Clear filters"
+  },
+  "location": {
+    "title": "Where I am",
+    "description": "San Francisco now — previously Taipei and Los Angeles.",
+    "back": "← Home",
+    "currentBadge": "Now",
+    "cities": {
+      "sf": "San Francisco",
+      "taipei": "Taipei",
+      "la": "Los Angeles"
+    },
+    "cityNotes": {
+      "sf": "Based in the Bay Area.",
+      "taipei": "Grew up and studied in Taiwan.",
+      "la": "Lived in Southern California."
+    }
   }
 }

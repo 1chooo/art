@@ -5,7 +5,7 @@
 export type BentoSocialIcon =
   | "code"
   | "share"
-  | "video"
+  | "location"
   | "mail"
   | "globe"
   | "link"
@@ -42,9 +42,9 @@ export const BENTO_SOCIAL_LINKS: BentoSocialLink[] = [
     icon: "share",
   },
   {
-    href: "#",
-    label: "Video",
-    icon: "video",
+    href: "/location",
+    label: "Location",
+    icon: "location",
   },
   {
     href: "mailto:hugo@1chooo.com",

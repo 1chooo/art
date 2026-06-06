@@ -89,5 +89,21 @@
     "allTags": "全部",
     "empty": "沒有符合條件的文章。",
     "clearFilters": "清除篩選"
+  },
+  "location": {
+    "title": "我在哪裡",
+    "description": "現居舊金山——先前曾住在台北與洛杉磯。",
+    "back": "← 首頁",
+    "currentBadge": "現在",
+    "cities": {
+      "sf": "舊金山",
+      "taipei": "台北",
+      "la": "洛杉磯"
+    },
+    "cityNotes": {
+      "sf": "目前定居灣區。",
+      "taipei": "在台灣成長與求學。",
+      "la": "曾住在南加州。"
+    }
   }
 }
