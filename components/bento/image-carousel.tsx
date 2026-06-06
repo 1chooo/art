@@ -34,7 +34,8 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
           type="button"
           onClick={() => setIndex((i) => i - 1)}
           aria-label={prevLabel}
-          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-l-(--spacing-bento-gap) border-b-(--spacing-bento-gap)"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3"
+          style={{ borderLeftWidth: 'var(--spacing-bento-gap)', borderBottomWidth: 'var(--spacing-bento-gap)' }}
         >
           <ChevronLeft className="size-5" strokeWidth={2.5} />
         </button>
@@ -42,7 +43,8 @@ export function ImageCarousel({ images, prevLabel, nextLabel }: Props) {
           type="button"
           onClick={() => setIndex((i) => i + 1)}
           aria-label={nextLabel}
-          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3 border-b-(--spacing-bento-gap)"
+          className="border-bento-ink bg-bento-bg text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center p-2 transition-colors md:p-3"
+          style={{ borderBottomWidth: 'var(--spacing-bento-gap)' }}
         >
           <ChevronRight className="size-5" strokeWidth={2.5} />
         </button>
