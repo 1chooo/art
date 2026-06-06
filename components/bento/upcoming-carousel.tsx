@@ -81,7 +81,7 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
 
       {/* Label */}
       <div className="px-4 py-2 md:px-6 md:py-3">
-        <p className="inline-block border-b-2 border-current text-xs font-bold uppercase tracking-[0.15em]">
+        <p className="border-bento-ink text-bento-ink inline-block border-b-2 text-xs font-bold uppercase tracking-[0.15em]">
           {label}
         </p>
       </div>
@@ -95,16 +95,16 @@ export function UpcomingCarousel({ slides, prevLabel, nextLabel, label }: Props)
         {slide.href ? (
           <Link
             href={slide.href}
-            className="font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl"
+            className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight transition-opacity hover:opacity-70 md:text-3xl"
           >
             {slide.title}
           </Link>
         ) : (
-          <h3 className="font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl">
+          <h3 className="text-bento-ink font-(family-name:--font-serif-display) text-xl font-bold leading-tight md:text-3xl">
             {slide.title}
           </h3>
         )}
-        <p className="mt-2 text-sm font-medium leading-snug opacity-80 md:mt-3 md:text-base">
+        <p className="text-bento-ink mt-2 text-sm font-medium leading-snug opacity-80 md:mt-3 md:text-base">
           {slide.description}
         </p>
       </div>

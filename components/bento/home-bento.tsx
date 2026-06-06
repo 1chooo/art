@@ -90,9 +90,7 @@ export async function HomeBento() {
         />
 
         {/* Upcoming */}
-        <section
-          className={`order-2 flex flex-col md:order-0 md:col-span-6 ${bentoCellGroup}`}
-        >
+        <section className="bg-bento-bg order-2 flex flex-col md:order-0 md:col-span-6">
           <UpcomingCarousel
             slides={upcomingSlides}
             prevLabel={t("carouselPrev")}
@@ -104,9 +102,7 @@ export async function HomeBento() {
         {/* ── Row 2 ── */}
 
         {/* Hero image */}
-        <div
-          className={`group order-5 bg-bento-bg md:order-0 md:col-span-6 md:row-start-2`}
-        >
+        <div className="bg-bento-bg order-5 md:order-0 md:col-span-6 md:row-start-2">
           <ImageCarousel
             images={heroImages}
             prevLabel={t("carouselPrev")}
@@ -115,9 +111,7 @@ export async function HomeBento() {
         </div>
 
         {/* Project carousel */}
-        <section
-          className={`order-4 flex flex-col md:order-0 md:col-span-3 md:row-start-2 ${bentoCellGroup}`}
-        >
+        <section className="bg-bento-bg order-4 flex flex-col md:order-0 md:col-span-3 md:row-start-2">
           <UpcomingCarousel
             slides={projectSlides}
             prevLabel={t("carouselPrev")}
