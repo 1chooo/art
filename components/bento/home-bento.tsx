@@ -1,15 +1,13 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { Code2, Mail, Share2, Video } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getAllPosts, getAllTags } from "@/lib/posts";
 import { getFeaturedProjects } from "@/lib/projects";
+import { getWeather } from "@/lib/weather";
 import { BentoLabel } from "@/components/bento/bento-label";
+import { BentoSocialIcons } from "@/components/bento/bento-social-icons";
 import { ImageCarousel } from "@/components/bento/image-carousel";
 import { TagCarousel } from "@/components/bento/tag-carousel";
 import { UpcomingCarousel } from "@/components/bento/upcoming-carousel";
-
-const iconBox =
-  "text-bento-ink hover:bg-bento-ink hover:text-bento-bg flex items-center justify-center transition-colors";
 
 export async function HomeBento() {
   const locale = (await getLocale()) as "en" | "zh";
@@ -19,6 +17,7 @@ export async function HomeBento() {
   const posts = await getAllPosts(locale);
   const projects = await getFeaturedProjects(locale);
   const tagNames = (await getAllTags()).map((s) => s.tag);
+  const weather = await getWeather();
   const latest = posts[0];
   const upcomingSlides =
     posts.length > 0
@@ -124,44 +123,19 @@ export async function HomeBento() {
             </p>
           </div>
 
-          {/* Social icons 2×2 */}
-          <a
-            href="https://github.com/1chooo/art"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${iconBox} bg-bento-bg p-3`}
-            aria-label="GitHub"
-          >
-            <Code2 className="size-5" strokeWidth={2.5} />
-          </a>
-          <a
-            href="https://youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${iconBox} bg-bento-bg p-3`}
-            aria-label="YouTube"
-          >
-            <Share2 className="size-5" strokeWidth={2.5} />
-          </a>
-          <a
-            href="#"
-            className={`${iconBox} bg-bento-bg p-3`}
-            aria-label="Video"
-          >
-            <Video className="size-5" strokeWidth={2.5} />
-          </a>
-          <a
-            href="mailto:hello@example.com"
-            className={`${iconBox} bg-bento-bg p-3`}
-            aria-label="Email"
-          >
-            <Mail className="size-5" strokeWidth={2.5} />
-          </a>
+          {/* Social icons 2×2 — customize in lib/bento-social.ts */}
+          <BentoSocialIcons />
 
           {/* Weather */}
           <div className="bg-bento-bg col-span-2 flex flex-1 flex-col items-center justify-center p-3 text-center">
+            <BentoLabel>{t("weatherLabel")}</BentoLabel>
             <p className="font-(family-name:--font-serif-display) text-base font-bold md:text-lg">
-              {t("weatherLine")}
+              {weather
+                ? t("weatherLine", {
+                    temp: weather.temperature,
+                    condition: t(`weatherConditions.${weather.condition}`),
+                  })
+                : t("weatherUnavailable")}
             </p>
           </div>
         </div>
