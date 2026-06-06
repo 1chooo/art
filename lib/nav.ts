@@ -13,9 +13,4 @@ export const NAV_ITEMS: NavItem[] = [
   { kind: "internal", href: "/posts", labelKey: "note" },
   { kind: "internal", href: "/projects", labelKey: "projects" },
   { kind: "internal", href: "/about", labelKey: "about" },
-  {
-    kind: "external",
-    href: "https://github.com/1chooo/art",
-    labelKey: "code",
-  },
 ];
