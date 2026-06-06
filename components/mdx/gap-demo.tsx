@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 
 const PRESETS = { mobile: 8, desktop: 16 } as const;
@@ -102,7 +102,7 @@ export function GapDemo({ locale = "en" }: GapDemoProps) {
 
 function InlineCodeDisplay({ children }: { children: React.ReactNode }) {
   return (
-    <code className="bg-surface text-ink font-(family-name:--font-mono) rounded px-1.5 py-0.5 text-[0.875em]">
+    <code className="bg-surface text-ink font-mono rounded px-1.5 py-0.5 text-[0.875em]">
       {children}
     </code>
   );
