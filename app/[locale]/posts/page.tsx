@@ -77,7 +77,7 @@ export default async function PostsPage(props: Props) {
     <div className="bg-paper w-full px-5 pb-24 pt-10 md:px-8 md:pt-16">
       <div className="mx-auto max-w-3xl">
         <header className="border-border mb-8 border-b pb-6 md:mb-10 md:pb-8">
-          <h1 className="font-[family-name:var(--font-serif-display)] text-ink mb-2 text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="font-(family-name:--font-serif-display) text-ink mb-2 text-3xl font-bold tracking-tight md:text-4xl">
             {t("title")}
           </h1>
           <p className="text-ink-muted mb-2 text-sm md:text-base">
@@ -156,7 +156,7 @@ export default async function PostsPage(props: Props) {
           <div className="space-y-12">
             {grouped.map(([year, posts]) => (
               <section key={year}>
-                <h2 className="font-[family-name:var(--font-serif-display)] text-ink-muted mb-6 text-2xl font-bold md:mb-6">
+                <h2 className="font-(family-name:--font-serif-display) text-ink-muted mb-6 text-2xl font-bold md:mb-6">
                   {year}
                 </h2>
                 <ul className="flex flex-col">
@@ -170,7 +170,7 @@ export default async function PostsPage(props: Props) {
                       </p>
                       <Link
                         href={`/posts/${post.slug}`}
-                        className="font-[family-name:var(--font-serif-display)] text-ink hover:text-accent order-1 text-2xl font-bold leading-tight transition-colors md:order-2 md:text-3xl"
+                        className="font-(family-name:--font-serif-display) text-ink hover:text-accent order-1 text-2xl font-bold leading-tight transition-colors md:order-2 md:text-3xl"
                       >
                         {post.title}
                       </Link>

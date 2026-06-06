@@ -61,7 +61,7 @@ export default async function PostPage(props: Props) {
         <p className="text-ink-muted mb-3 text-sm tracking-wide uppercase">
           {formatDate(meta.date, locale)}
         </p>
-        <h1 className="font-[family-name:var(--font-serif-display)] text-ink mb-4 text-3xl leading-tight tracking-tight md:text-5xl">
+        <h1 className="font-(family-name:--font-serif-display) text-ink mb-4 text-3xl leading-tight tracking-tight md:text-5xl">
           {meta.title}
         </h1>
         <p className="text-ink-muted text-base leading-relaxed md:text-xl">
