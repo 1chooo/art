@@ -5,8 +5,7 @@
   },
   "brand": "Hugo Lin",
   "nav": {
-    "home": "Home",
-    "note": "Note",
+    "notes": "Notes",
     "projects": "Projects",
     "code": "Code",
     "about": "About"
@@ -85,8 +84,8 @@
     "visitSite": "Visit site",
     "viewRepo": "View repo"
   },
-  "posts": {
-    "title": "All posts",
+  "notes": {
+    "title": "All notes",
     "description": "Browse every note, filter by tag, or search.",
     "count": "{count, plural, one {# post} other {# posts}}",
     "searchPlaceholder": "Search posts…",

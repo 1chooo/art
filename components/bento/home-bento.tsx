@@ -81,7 +81,7 @@ export async function HomeBento() {
           </p>
         </section>
 
-        {/* Tag — cycles all tags from posts; click opens /posts?tag= */}
+        {/* Tag — cycles all tags from posts; click opens /notes?tag= */}
         <TagCarousel
           tags={tagNames}
           label={t("tagLabel")}
@@ -169,7 +169,7 @@ export async function HomeBento() {
         >
           {latest ? (
             <Link
-              href={`/posts/${latest.slug}`}
+              href={`/notes/${latest.slug}`}
               className="font-(family-name:--font-serif-display) inline-block text-lg font-bold md:text-2xl"
             >
               {t("cta")}

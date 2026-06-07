@@ -73,7 +73,7 @@ export function TagDemo({ posts, tags, locale = "en" }: TagDemoProps) {
             className="border-border flex flex-wrap items-center justify-between gap-2 border-b pb-3 last:border-b-0 last:pb-0"
           >
             <Link
-              href={`/posts/${post.slug}`}
+              href={`/notes/${post.slug}`}
               className="text-ink hover:text-accent font-medium transition-colors"
             >
               {post.title}

@@ -60,7 +60,7 @@ export function TagCarousel({ tags, label, tagFallback, className }: Props) {
       {currentTag ? (
         <Link
           key={currentTag}
-          href={`/posts?tag=${encodeURIComponent(currentTag)}`}
+          href={`/notes?tag=${encodeURIComponent(currentTag)}`}
           className="font-(family-name:--font-serif-display) text-xl font-bold md:text-2xl"
           style={{ animation: "bento-tag-in 0.35s ease-out" }}
         >

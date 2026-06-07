@@ -5,8 +5,7 @@
   },
   "brand": "Hugo Lin",
   "nav": {
-    "home": "首頁",
-    "note": "筆記",
+    "notes": "筆記",
     "projects": "專案",
     "code": "程式碼",
     "about": "關於"
@@ -85,8 +84,8 @@
     "visitSite": "造訪網站",
     "viewRepo": "查看原始碼"
   },
-  "posts": {
-    "title": "所有文章",
+  "notes": {
+    "title": "所有筆記",
     "description": "瀏覽全部筆記、依標籤篩選或搜尋。",
     "count": "共 {count} 篇",
     "searchPlaceholder": "搜尋文章…",
