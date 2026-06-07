@@ -1,0 +1,141 @@
+export const postMeta = {
+  title: "用 MDX 寫作",
+  date: "2026-06-06",
+  description:
+    "入門指南——文章如何運作、有哪些 MDX 短碼，以及如何加入自己的內容。",
+  tags: ["guide", "mdx", "journal"],
+};
+
+<Callout variant="note" title="備註">
+  這是模板附帶的**入門內容**。熟悉基礎後可以刪除或替換——語氣參考可閱讀 [Hello, world](/notes/hello-world)。
+</Callout>
+
+這本日誌刻意分成兩種氛圍：**首頁的粗獷 bento 網格**，以及**文章頁的編輯式閱讀體驗**。首頁用結構說話；文章用文字呼吸。
+
+## 技術堆疊一覽
+
+點選每張卡片，了解它在專案中的角色：
+
+<StackCards locale="zh" />
+
+<Callout variant="tip" title="提示">
+  全站以 App Router 與 React Server Components 為預設。只有在需要互動的地方——輪播、搜尋，以及本文的示範元件——才使用 Client Component。
+</Callout>
+
+## 專案結構
+
+展開資料夾，瀏覽目錄配置：
+
+<FileTree
+  tree={[
+    {
+      name: "app/",
+      children: [
+        {
+          name: "[locale]/",
+          children: [
+            { name: "page.tsx — bento 首頁" },
+            {
+              name: "notes/",
+              children: [
+                { name: "page.tsx — 列表與篩選" },
+                { name: "[slug]/page.tsx — 文章頁" },
+              ],
+            },
+          ],
+        },
+        { name: "globals.css — 設計 token" },
+      ],
+    },
+    {
+      name: "content/posts/",
+      children: [{ name: "*.mdx — 文章與 postMeta" }],
+    },
+    {
+      name: "components/",
+      children: [
+        { name: "bento/ — 首頁網格" },
+        { name: "mdx/ — 互動式文章區塊" },
+      ],
+    },
+    { name: "lib/posts.ts — 掃描 content/posts/" },
+    { name: "messages/ — UI 翻譯（en、zh）" },
+    { name: "i18n/ — 語系路由" },
+  ]}
+/>
+
+## 逐步操作
+
+<Steps>
+  <Step title="新增文章檔案">
+    在 <InlineCode>content/posts/</InlineCode> 放入 <InlineCode>.mdx</InlineCode> 檔案。匯出 <InlineCode>postMeta</InlineCode> 物件，包含 title、date、description 與可選的 tags。slug 來自檔名——<InlineCode>hello-world.mdx</InlineCode> 對應 <InlineCode>/notes/hello-world</InlineCode>。
+  </Step>
+  <Step title="語系後綴（可選）">
+    雙語文章可使用 <InlineCode>my-post.en.mdx</InlineCode> 與 <InlineCode>my-post.zh.mdx</InlineCode>，共用同一 slug。沒有後綴的檔案預設為英文。
+  </Step>
+  <Step title="撰寫 MDX 內文">
+    標準 markdown 即可使用。短碼在 <InlineCode>mdx-components.tsx</InlineCode> 註冊——<InlineCode>Callout</InlineCode>、<InlineCode>CodeBlock</InlineCode>、<InlineCode>Steps</InlineCode> 等。
+  </Step>
+  <Step title="本機預覽">
+    執行 <InlineCode>pnpm dev</InlineCode>，前往 <InlineCode>/zh/notes/your-slug</InlineCode>。無需手動註冊——<InlineCode>lib/posts.ts</InlineCode> 在建置時掃描檔案系統。
+  </Step>
+</Steps>
+
+## 動手試試
+
+新文章的基本結構如下：
+
+<CodeBlock
+  title="content/posts/my-post.mdx"
+  language="mdx"
+  code={`export const postMeta = {
+  title: "我的第一篇筆記",
+  date: "2026-06-06",
+  description: "供列表與 SEO 使用的簡短摘要。",
+  tags: ["journal"],
+};
+
+你的 MDX 內容從這裡開始。`}
+/>
+
+啟動開發伺服器：
+
+<CodeBlock
+  title="終端機"
+  language="bash"
+  code="pnpm dev"
+/>
+
+前往 <InlineCode>/zh/notes/my-post</InlineCode> 即可預覽。
+
+## MDX 中的圖片
+
+將圖片放在 <InlineCode>public/</InlineCode>，用標準 markdown 語法引用。全域 <InlineCode>MdxImg</InlineCode> 元件會加上細框與間距：
+
+![首頁輪播圖](/opengraph-image.png)
+
+同一張圖也會出現在首頁 bento 的圖片輪播中。
+
+## 標籤與探索
+
+標籤是 <InlineCode>postMeta</InlineCode> 上的可選字串。它們驅動[筆記列表](/notes)的篩選 pill、文章頁可點擊的標籤，以及首頁 bento 的標籤輪播。
+
+試試下方的篩選器——它使用本站的真實文章：
+
+<TagDemo />
+
+## Bento 間距（互動示範）
+
+首頁網格用單一 CSS token 控制格子之間的黑線。拖曳滑桿，感受間距大小對版面的影響：
+
+<GapDemo />
+
+<Callout variant="note" title="備註">
+  正式網站沒有滑桿——示範僅供學習。實際值在 <InlineCode>globals.css</InlineCode> 的 media query 中固定為 8px / 16px。
+</Callout>
+
+## 接下來
+
+瀏覽[完整筆記列表](/notes)，閱讀 [Hello, world](/notes/hello-world) 感受語氣，然後用你自己的文字取代這篇指南。
+
+最好的日誌都是一小步一小步長出來的——一篇文章、一個標籤、一頁安靜的版面。

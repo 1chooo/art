@@ -1,0 +1,141 @@
+export const postMeta = {
+  title: "Writing in MDX",
+  date: "2026-06-06",
+  description:
+    "A starter guide — how posts work, what MDX shortcodes are available, and how to add your own content.",
+  tags: ["guide", "mdx", "journal"],
+};
+
+<Callout variant="note">
+  This is **starter content** shipped with the template. Delete or replace it once you know the basics — then read [Hello, world](/notes/hello-world) for tone inspiration.
+</Callout>
+
+This journal splits two moods: a **brutalist bento home** and an **editorial reading experience** for posts. The home grid is loud with structure; the articles are calm with words.
+
+## Stack at a glance
+
+Click each card to read what it does in this project:
+
+<StackCards />
+
+<Callout variant="tip">
+  Everything runs on the App Router with React Server Components by default. Client components are used only where interactivity is needed — carousels, search, and the demos in this article.
+</Callout>
+
+## Project shape
+
+Expand folders to explore the layout:
+
+<FileTree
+  tree={[
+    {
+      name: "app/",
+      children: [
+        {
+          name: "[locale]/",
+          children: [
+            { name: "page.tsx — bento home" },
+            {
+              name: "notes/",
+              children: [
+                { name: "page.tsx — index + filters" },
+                { name: "[slug]/page.tsx — article" },
+              ],
+            },
+          ],
+        },
+        { name: "globals.css — design tokens" },
+      ],
+    },
+    {
+      name: "content/posts/",
+      children: [{ name: "*.mdx — articles + postMeta" }],
+    },
+    {
+      name: "components/",
+      children: [
+        { name: "bento/ — home grid" },
+        { name: "mdx/ — interactive article blocks" },
+      ],
+    },
+    { name: "lib/posts.ts — scans content/posts/" },
+    { name: "messages/ — UI translations (en, zh)" },
+    { name: "i18n/ — locale routing" },
+  ]}
+/>
+
+## Step-by-step
+
+<Steps>
+  <Step title="Add a post file">
+    Drop a <InlineCode>.mdx</InlineCode> file in <InlineCode>content/posts/</InlineCode>. Export a <InlineCode>postMeta</InlineCode> object with title, date, description, and optional tags. The slug comes from the filename — <InlineCode>hello-world.mdx</InlineCode> becomes <InlineCode>/notes/hello-world</InlineCode>.
+  </Step>
+  <Step title="Use locale suffixes (optional)">
+    For bilingual posts, use <InlineCode>my-post.en.mdx</InlineCode> and <InlineCode>my-post.zh.mdx</InlineCode> under the same slug. Files without a suffix default to English.
+  </Step>
+  <Step title="Write MDX body">
+    Standard markdown works out of the box. Import shortcodes from <InlineCode>mdx-components.tsx</InlineCode> — <InlineCode>Callout</InlineCode>, <InlineCode>CodeBlock</InlineCode>, <InlineCode>Steps</InlineCode>, and more.
+  </Step>
+  <Step title="Preview locally">
+    Run <InlineCode>pnpm dev</InlineCode> and visit <InlineCode>/en/notes/your-slug</InlineCode>. No manual registry — <InlineCode>lib/posts.ts</InlineCode> scans the filesystem at build time.
+  </Step>
+</Steps>
+
+## Try it yourself
+
+Here is the shape of a new post:
+
+<CodeBlock
+  title="content/posts/my-post.mdx"
+  language="mdx"
+  code={`export const postMeta = {
+  title: "My first note",
+  date: "2026-06-06",
+  description: "A short summary for listings and SEO.",
+  tags: ["journal"],
+};
+
+Your MDX content starts here.`}
+/>
+
+Then run the dev server:
+
+<CodeBlock
+  title="Terminal"
+  language="bash"
+  code="pnpm dev"
+/>
+
+Visit <InlineCode>/en/notes/my-post</InlineCode> to see it live.
+
+## Images in MDX
+
+Place images in <InlineCode>public/</InlineCode> and reference them with standard markdown syntax. The global <InlineCode>MdxImg</InlineCode> component adds a subtle border and spacing:
+
+![Gallery hero](/opengraph-image.png)
+
+The same asset powers the image carousel on the home bento grid.
+
+## Tags and discovery
+
+Tags are optional strings on each post's <InlineCode>postMeta</InlineCode>. They power filter pills on the [notes index](/notes), clickable tags on article headers, and the tag carousel on the home grid.
+
+Try the filter below — it uses real posts from this site:
+
+<TagDemo />
+
+## Bento gaps (interactive demo)
+
+The home grid uses a single CSS token for black lines between tiles. Drag the slider to see how gap size changes the feel:
+
+<GapDemo />
+
+<Callout variant="note">
+  The real site does not expose a slider — the demo is for learning. In production the value is fixed at 8px / 16px via a media query in <InlineCode>globals.css</InlineCode>.
+</Callout>
+
+## What is next
+
+Browse the [full notes index](/notes), read [Hello, world](/notes/hello-world) for the site's tone, then replace this file with your own writing.
+
+The best journals are built in small steps — one post, one tag, one quiet page at a time.

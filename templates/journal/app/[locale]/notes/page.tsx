@@ -12,7 +12,7 @@ type Props = {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { locale } = await props.params;
-  const t = await getTranslations({ locale, namespace: "posts" });
+  const t = await getTranslations({ locale, namespace: "notes" });
   return {
     title: t("title"),
     description: t("description"),
@@ -55,7 +55,7 @@ export default async function PostsPage(props: Props) {
   const tag = typeof sp.tag === "string" ? sp.tag : undefined;
   const q = typeof sp.q === "string" ? sp.q : undefined;
 
-  const t = await getTranslations("posts");
+  const t = await getTranslations("notes");
   const all = await getAllPosts(locale as "en" | "zh");
   const tagStats = await getAllTags();
   const qLower = q?.trim().toLowerCase() ?? "";
@@ -110,7 +110,7 @@ export default async function PostsPage(props: Props) {
             <ul className="flex flex-wrap gap-2">
               <li>
                 <Link
-                  href={`/posts${postsQueryString({ q: currentQ || undefined })}`}
+                  href={`/notes${postsQueryString({ q: currentQ || undefined })}`}
                   className={`rounded-full px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors md:py-1.5 md:text-sm ${
                     !tag
                       ? "bg-accent text-paper"
@@ -123,7 +123,7 @@ export default async function PostsPage(props: Props) {
               {tagStats.map((stat) => (
                 <li key={stat.tag}>
                   <Link
-                    href={`/posts${postsQueryString({ tag: stat.tag, q: currentQ || undefined })}`}
+                    href={`/notes${postsQueryString({ tag: stat.tag, q: currentQ || undefined })}`}
                     className={`rounded-full px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors md:py-1.5 md:text-sm ${
                       tag === stat.tag
                         ? "bg-accent text-paper"
@@ -141,7 +141,7 @@ export default async function PostsPage(props: Props) {
           {hasFilters ? (
             <p>
               <Link
-                href="/posts"
+                href="/notes"
                 className="text-accent text-sm font-semibold hover:underline"
               >
                 {t("clearFilters")}
@@ -169,7 +169,7 @@ export default async function PostsPage(props: Props) {
                         {formatDate(post.date, locale)}
                       </p>
                       <Link
-                        href={`/posts/${post.slug}`}
+                        href={`/notes/${post.slug}`}
                         className="font-(family-name:--font-serif-display) text-ink hover:text-accent order-1 text-2xl font-bold leading-tight transition-colors md:order-2 md:text-3xl"
                       >
                         {post.title}
@@ -182,7 +182,7 @@ export default async function PostsPage(props: Props) {
                           {post.tags.map((tg) => (
                             <li key={tg}>
                               <Link
-                                href={`/posts${postsQueryString({ tag: tg, q: currentQ || undefined })}`}
+                                href={`/notes${postsQueryString({ tag: tg, q: currentQ || undefined })}`}
                                 className="bg-accent-soft text-accent rounded-full px-2.5 py-1 text-xs font-medium tracking-wide uppercase hover:opacity-90"
                               >
                                 {tg}

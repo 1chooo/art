@@ -1,0 +1,32 @@
+{
+  "name": "create-bento-journal",
+  "version": "0.1.0",
+  "description": "Scaffold a brutalist bento journal with Next.js, MDX, and next-intl",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-bento-journal": "./index.mjs"
+  },
+  "files": [
+    "index.mjs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.1"
+  },
+  "keywords": [
+    "nextjs",
+    "mdx",
+    "journal",
+    "bento",
+    "template",
+    "create-app"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1chooo/art.git",
+    "directory": "packages/create-bento-journal"
+  }
+}

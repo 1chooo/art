@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-.pnpm-store/
 
 # testing
 /coverage
@@ -35,8 +34,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# template build artifacts
-templates/journal/node_modules
-templates/journal/.next
-templates/journal/pnpm-lock.yaml

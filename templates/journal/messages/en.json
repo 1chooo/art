@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "title": "{{AUTHOR_NAME}} · Journal",
+    "description": "Notes, projects, and experiments."
+  },
+  "brand": "{{AUTHOR_NAME}}",
+  "nav": {
+    "notes": "Notes",
+    "projects": "Projects",
+    "code": "Code",
+    "about": "About"
+  },
+  "about": {
+    "title": "About",
+    "description": "Software builder, writer, and photographer.",
+    "lead": "Replace this with a short introduction — who you are and what you write about.",
+    "philosophy": "A quote or line that captures how you think about your work.",
+    "backgroundHeading": "Background",
+    "background": "Share your background — education, paths taken, and what led you here.",
+    "workHeading": "Work",
+    "work": "Describe your professional experience, roles, and what you build.",
+    "beyondHeading": "Beyond code",
+    "beyond": "Hobbies, interests, or pursuits outside of your main work.",
+    "projectsHeading": "Projects",
+    "projects": "A few things you have built:",
+    "project1chooo": "a project worth highlighting",
+    "projectArt": "this journal — brutalist bento grid with MDX posts",
+    "projectVCard": "another project or experiment",
+    "connect": "Want to collaborate or chat? Find me at"
+  },
+  "footer": {
+    "note": "Built with Next.js & MDX."
+  },
+  "home": {
+    "copyrightLabel": "Copyright",
+    "tagLabel": "Tag",
+    "tagFallback": "Programming",
+    "upcomingLabel": "Upcoming",
+    "projectLabel": "Project",
+    "projectFallbackTitle": "Projects",
+    "projectFallbackDesc": "Browse featured work and experiments.",
+    "authorLabel": "Author",
+    "quickLinks": {
+      "location": "{{CITY_NAME}}",
+      "github": "GitHub",
+      "email": "{{AUTHOR_EMAIL}}"
+    },
+    "weatherLabel": "Weather",
+    "weatherLine": "{temp}°C · {condition}",
+    "weatherUnavailable": "—",
+    "weatherConditions": {
+      "clear": "Clear",
+      "mainlyClear": "Mainly clear",
+      "partlyCloudy": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "snow": "Snow",
+      "showers": "Showers",
+      "thunderstorm": "Thunderstorm"
+    },
+    "quote": "Start writing. The grid is already yours.",
+    "cta": "View the latest Article",
+    "upcomingFallbackTitle": "Your next note",
+    "upcomingFallbackDesc": "Add a post in content/posts/ to see it here.",
+    "carouselPrev": "Previous slide",
+    "carouselNext": "Next slide"
+  },
+  "post": {
+    "back": "← Journal",
+    "readInLocale": "Read in {locale, select, en {English} zh {中文} other {another language}}"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Things I have built — from personal sites to open-source templates and weekend experiments.",
+    "readMore": "Read more →",
+    "miniHeading": "My other mini projects (find all of them on GitHub):",
+    "empty": "No projects yet."
+  },
+  "project": {
+    "back": "← Projects",
+    "readInLocale": "Read in {locale, select, en {English} zh {中文} other {another language}}",
+    "visitSite": "Visit site",
+    "viewRepo": "View repo"
+  },
+  "notes": {
+    "title": "All notes",
+    "description": "Browse every note, filter by tag, or search.",
+    "count": "{count, plural, one {# post} other {# posts}}",
+    "searchPlaceholder": "Search posts…",
+    "tagsHeading": "Tags",
+    "allTags": "All",
+    "empty": "No posts match your filters.",
+    "clearFilters": "Clear filters"
+  },
+  "location": {
+    "title": "Where I am",
+    "description": "{{CITY_NAME}} now — edit lib/locations.ts to add your cities.",
+    "back": "← Home",
+    "currentBadge": "Now",
+    "cities": {
+      "city1": "{{CITY_NAME}}",
+      "city2": "City Two",
+      "city3": "City Three"
+    },
+    "cityNotes": {
+      "city1": "Your current city.",
+      "city2": "Another place that matters to you.",
+      "city3": "A third marker on the globe."
+    }
+  }
+}

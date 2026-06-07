@@ -87,7 +87,7 @@ export default async function PostPage(props: Props) {
         {alternateLocale ? (
           <p className="mt-4">
             <Link
-              href={`/posts/${slug}`}
+              href={`/notes/${slug}`}
               locale={alternateLocale}
               className="text-accent text-sm font-semibold hover:underline"
             >
@@ -100,7 +100,7 @@ export default async function PostPage(props: Props) {
             {meta.tags.map((tag) => (
               <li key={tag}>
                 <Link
-                  href={`/posts?tag=${encodeURIComponent(tag)}`}
+                  href={`/notes?tag=${encodeURIComponent(tag)}`}
                   className="bg-accent-soft text-accent rounded-full px-3 py-1 text-xs tracking-wide uppercase hover:opacity-90"
                 >
                   {tag}

@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "title": "{{AUTHOR_NAME}} · 筆記",
+    "description": "筆記、專案與實驗。"
+  },
+  "brand": "{{AUTHOR_NAME}}",
+  "nav": {
+    "notes": "筆記",
+    "projects": "專案",
+    "code": "程式碼",
+    "about": "關於"
+  },
+  "about": {
+    "title": "關於",
+    "description": "軟體開發者、寫作者與攝影師。",
+    "lead": "在此寫下簡短自我介紹——你是誰、寫些什麼。",
+    "philosophy": "一句話或引言，代表你的思考方式。",
+    "backgroundHeading": "背景",
+    "background": "分享你的背景——學經歷、走過的路。",
+    "workHeading": "工作經歷",
+    "work": "描述你的工作經歷與你打造的東西。",
+    "beyondHeading": "程式之外",
+    "beyond": "工作之外的興趣或追求。",
+    "projectsHeading": "專案",
+    "projects": "你做過的一些作品：",
+    "project1chooo": "值得放上的專案",
+    "projectArt": "這本筆記——粗獷 Bento 版面與 MDX 文章",
+    "projectVCard": "另一個專案或實驗",
+    "connect": "想合作或聊聊？歡迎到"
+  },
+  "footer": {
+    "note": "使用 Next.js 與 MDX 構建。"
+  },
+  "home": {
+    "copyrightLabel": "版權",
+    "tagLabel": "標籤",
+    "tagFallback": "程式",
+    "upcomingLabel": "即將推出",
+    "projectLabel": "專案",
+    "projectFallbackTitle": "專案",
+    "projectFallbackDesc": "瀏覽精選作品與實驗。",
+    "authorLabel": "作者",
+    "quickLinks": {
+      "location": "{{CITY_NAME}}",
+      "github": "GitHub",
+      "email": "{{AUTHOR_EMAIL}}"
+    },
+    "weatherLabel": "天氣",
+    "weatherLine": "{temp}°C · {condition}",
+    "weatherUnavailable": "—",
+    "weatherConditions": {
+      "clear": "晴",
+      "mainlyClear": "大致晴朗",
+      "partlyCloudy": "多雲",
+      "overcast": "陰天",
+      "fog": "有霧",
+      "drizzle": "毛毛雨",
+      "rain": "雨",
+      "snow": "雪",
+      "showers": "陣雨",
+      "thunderstorm": "雷雨"
+    },
+    "quote": "開始寫吧，網格已經準備好了。",
+    "cta": "閱讀最新文章",
+    "upcomingFallbackTitle": "你的下一篇筆記",
+    "upcomingFallbackDesc": "在 content/posts/ 新增文章後會顯示在這裡。",
+    "carouselPrev": "上一張",
+    "carouselNext": "下一張"
+  },
+  "post": {
+    "back": "← 回到筆記",
+    "readInLocale": "閱讀{locale, select, en {英文版} zh {中文版} other {其他語言}}"
+  },
+  "projects": {
+    "title": "專案",
+    "description": "我做過的一些作品——從個人網站到開源模板與週末實驗。",
+    "readMore": "閱讀更多 →",
+    "miniHeading": "其他小型專案（完整列表見 GitHub）：",
+    "empty": "尚無專案。"
+  },
+  "project": {
+    "back": "← 專案",
+    "readInLocale": "閱讀{locale, select, en {英文版} zh {中文版} other {其他語言}}",
+    "visitSite": "造訪網站",
+    "viewRepo": "查看原始碼"
+  },
+  "notes": {
+    "title": "所有筆記",
+    "description": "瀏覽全部筆記、依標籤篩選或搜尋。",
+    "count": "共 {count} 篇",
+    "searchPlaceholder": "搜尋文章…",
+    "tagsHeading": "標籤",
+    "allTags": "全部",
+    "empty": "沒有符合條件的文章。",
+    "clearFilters": "清除篩選"
+  },
+  "location": {
+    "title": "我在哪裡",
+    "description": "目前在 {{CITY_NAME}}——在 lib/locations.ts 編輯你的城市。",
+    "back": "← 首頁",
+    "currentBadge": "現在",
+    "cities": {
+      "city1": "{{CITY_NAME}}",
+      "city2": "城市二",
+      "city3": "城市三"
+    },
+    "cityNotes": {
+      "city1": "你所在的城市。",
+      "city2": "另一個對你有意義的地方。",
+      "city3": "地圖上的第三個標記。"
+    }
+  }
+}
